@@ -1,0 +1,39 @@
+﻿.ng-hide-remove {
+    -webkit-animation: fadeIn 0.8s;
+    animation: fadeIn 0.8s;
+}
+
+.ng-enter {
+    -webkit-animation: fadeIn 0.8s;
+    animation: fadeIn 0.8s;
+}
+
+i.ng-hide-remove {
+    -webkit-animation: none;
+    animation: none;
+}
+
+i.ng-enter {
+    -webkit-animation: none;
+    animation: none;
+}
+
+.tree-grid-row.ng-hide-remove {
+    -webkit-animation: none;
+    animation: none;
+}
+
+.tree-grid-row.ng-enter {
+    -webkit-animation: none;
+    animation: none;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

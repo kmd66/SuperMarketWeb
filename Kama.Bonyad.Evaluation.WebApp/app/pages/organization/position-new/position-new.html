@@ -1,0 +1,26 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span ng-show="position.main.state === 'add'">ایجاد جایگاه سازمانی</span>
+                <span ng-show="position.main.state === 'edit'">ویرایش جایگاه سازمانی</span>
+                <span ng-show="position.main.state === 'cartable'">جایگاه‌های سازمانی</span>
+            </div>
+            <div class="panel-body">
+                <kama-position-cartable main="position.main"
+                                        cartable="position.cartable"
+                                        search="position.search"
+                                        ng-show="position.main.state === 'cartable'"></kama-position-cartable>
+
+                <kama-position-modify main="position.main"
+                                      modify="position.modify"
+                                      cartable="position.cartable"
+                                      user="position.user"
+                                      user-info="position.userInfo"
+                                      history="position.history"
+                                      history-model="position.historyModel"
+                                      ng-show="['add', 'edit'].indexOf(position.main.state) !== -1"></kama-position-modify>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿<style>
+    #content > div {
+        background: url(app/assets/images/pattern.png);
+    }
+</style>
+
+<div class="row">
+    <div class="col-xs-12 index-header">
+        <div id="sidebar-title-image">
+            <img src="/app/assets/images/app-logo-white.png" alt="بنیاد مستضعفان انقلاب اسلامی">
+        </div>
+        <div id="sidebar-title-text" class="col-xs-12">
+            <h1>سامانه ارزیابی</h1>
+        </div>
+    </div>
+
+    <div class="{{cols}}">
+        <div class="panel panel-kama">
+            <div class="panel-heading" ng-if="header">{{header}}</div>
+            <div class="panel-body">
+                <ng-transclude></ng-transclude>
+            </div>
+            <div class="panel-footer" ng-if="!hideFooter">
+                <p style="text-align: center;">تمامی حقوق این سامانه متعلق به بنیاد مستضعفان انقلاب اسلامی است.</p>
+                <p style="text-align: center;">پیاده سازی شده توسط <a href="http://kamatech.ir/" target="_blank">شرکت کاوه مکاترونیک آریا</a></p>
+                <p style="text-align: center; margin-top: 10px; font-size: 12px;">نسخه {{appInfo.version}} آخرین به‌روزرسانی {{appInfo.releaseDate}} در ساعت {{appInfo.releaseTime}}</p>
+            </div>
+        </div>
+    </div>
+</div>

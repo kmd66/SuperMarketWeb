@@ -1,0 +1,111 @@
+﻿
+<kama-grid obj="history.grid"></kama-grid>
+
+
+<!--modify-->
+<div class="modal fade" id="position-history-modify-modal" role="dialog" aria-labelledby="positionHistoryLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="positionHistoryLabel">
+                    <span>سوابق جایگاه</span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <kama-error errors="historyModel.model.errors"></kama-error>
+                    </div>
+                </div>
+                <!--شماره نامه-->
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label>شماره نامه</label>
+                    <input type="text" class="form-control" ng-model="historyModel.model.LetterNumber" />
+                </div>
+                <!--تاریخ نامه-->
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label>تاریخ نامه</label>
+                    <kama-input model="historyModel.model.Date" type="date"></kama-input>
+                </div>
+                <!--توضیحات-->
+                <div class="form-group col-xs-12">
+                    <label>توضیحات</label>
+                    <textarea rows="5" class="form-control" ng-model="historyModel.model.Comment"></textarea>
+                </div>
+
+                <!--فایل پیوست-->
+                <div class="col col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading collapsible" data-toggle="collapse" href="#history-modify-attachment-panel">
+                            فایل پیوست
+                        </div>
+                        <div class="panel-collapse collapse in" id="history-modify-attachment-panel">
+                            <div class="panel-body">
+                                <kama-attachment obj="historyModel.attachment6"></kama-attachment>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer btn-container">
+                <button type="button" class="btn btn-success btn-min-width" ng-click="historyModel.saveHistory()">ثبت</button>
+                <button type="button" class="btn btn-cancel btn-min-width" data-dismiss="modal">انصراف</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--view-->
+<div class="modal fade" id="position-history-view-modal-{{id}}" role="dialog" aria-labelledby="positionHistoryLabelView" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="positionHistoryLabelView">
+                    <span>سوابق جایگاه</span>
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <kama-error errors="historyModel.model.errors"></kama-error>
+                    </div>
+                </div>
+
+                <!--شماره نامه-->
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label>شماره نامه</label>
+                    <span class="form-value" readonly>{{historyModel.model.LetterNumber}}</span>
+                </div>
+                <!--تاریخ نامه-->
+                <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                    <label>تاریخ نامه</label>
+                    <kama-display-jalali class="form-value" readonly model="historyModel.model.Date"></kama-display-jalali>
+                </div>
+                <!--توضیحات-->
+                <div class="form-group col-xs-12">
+                    <label>توضیحات</label>
+                    <span class="form-value" readonly>{{historyModel.model.Comment}}</span>
+                </div>
+                <!--فایل پیوست-->
+                <div class="col col-xs-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading collapsible" data-toggle="collapse" href="#history-view-attachment-panel">
+                            فایل پیوست
+                        </div>
+                        <div class="panel-collapse collapse in" id="history-view-attachment-panel">
+                            <div class="panel-body">
+                                <kama-attachment obj="historyModel.attachment6"></kama-attachment>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer btn-container">
+                <button type="button" class="btn btn-cancel btn-min-width" data-dismiss="modal">انصراف</button>
+            </div>
+        </div>
+    </div>
+</div>

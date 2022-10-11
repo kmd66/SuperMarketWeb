@@ -1,0 +1,23 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span ng-show="productClassific.main.state === 'add'">ایجاد دسته</span>
+                <span ng-show="productClassific.main.state === 'edit'">ویرایش دسته</span>
+                <span ng-show="productClassific.main.state === 'cartable'">‌دسته‌ها</span>
+            </div>
+            <div class="panel-body">
+                <kama-product-classification-cartable main="productClassific.main"
+                                                      cartable="productClassific.cartable"
+                                                      search="productClassific.search"
+                                                      ng-show="productClassific.main.state === 'cartable'"></kama-product-classification-cartable>
+
+                <kama-product-classification-modify main="productClassific.main"
+                                                    modify="productClassific.modify"
+                                                    cartable="productClassific.cartable"
+                                                    ng-show="['add', 'edit'].indexOf(productClassific.main.state) !== -1"></kama-product-classification-modify>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,190 @@
+﻿@{
+    string cookieToken, formToken;
+    var response = System.Web.HttpContext.Current.Response;
+
+    AntiForgery.GetTokens(null, out cookieToken, out formToken); // generate new tokens
+
+    var formTokens = Session["antiForgeryFormToken"] == null ? new List<string>() : (List<string>)Session["antiForgeryFormToken"];
+    var cookieTokens = Session["antiForgeryCookieToken"] == null ? new List<string>() : (List<string>)Session["antiForgeryCookieToken"];
+    formTokens.Add(formToken);
+    cookieTokens.Add(cookieToken);
+    Session["antiForgeryFormToken"] = formTokens;
+    Session["antiForgeryCookieToken"] = cookieTokens;
+
+    <input name="__antiForgeryFormToken" type="hidden" value=@formToken />
+    <input name="__antiForgeryCookieToken" type="hidden" value=@cookieToken />
+    HttpCookie forgeryToken = new HttpCookie("__antiForgeryCookieToken");
+    forgeryToken.Value = cookieToken;
+    response.Cookies.Remove("__antiForgeryCookieToken");
+    response.Cookies.Add(forgeryToken);
+}
+
+<input name="__isAuthenticated" type="hidden" value="true">
+
+<div id="unique-alert-container"></div>
+<div id="alert-container"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div id="wrapper">
+            <div id="sidebar" class="col-xs-12">
+                <div id="sidebar-close"><i class="fa fa-close" aria-hidden="true"></i></div>
+
+                <div id="sidebar-title" class="row">
+                    <div id="sidebar-title-image"><img src="~/app/assets/images/app-logo-white.png" alt="@ViewBag.Strings.AppName"></div>
+                    <div id="sidebar-title-text" class="col-xs-12">
+                        <h1>@ViewBag.Strings.AppName</h1>
+                    </div>
+                </div>
+
+                <div id="sidebar-user" class="row">
+                    <div id="sidebar-user-picture" class="col-xs-4">
+                        <img src="app/assets/images/profile_picture.jpg">
+                    </div>
+                    <div id="sidebar-user-info" class="col-xs-8">
+                        <span>
+                            {{currentUserPosition.FirstName}} {{currentUserPosition.LastName}}<br>
+                            {{enums.EvaluationPositionType[currentUserPosition.Type]}}
+                        </span>
+                    </div>
+                </div>
+
+                <div id="sidebar-menu" class="row">
+                    <div class="col-xs-12">
+                        <div class="panel-group" id="sidebar-menu-container">
+
+                            <div class="panel panel-default" ng-repeat="menu in menus" ng-if="menu.subMenus.length && !menu.checkVisibility || menu.checkVisibility()">
+                                <div class="panel-heading" data-toggle="collapse" data-parent="#sidebar-menu-container" href="{{'#' + menu.name}}">
+                                    <i class="fa fa-{{menu.icon}}" aria-hidden="true"></i>
+                                    {{menu.title}}
+                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                    <kama-document-stats ng-if="menu.stats" types="menu.stats"></kama-document-stats>
+                                </div>
+                                <div id="{{menu.name}}" class="panel-collapse collapse {{menu.expand ? 'in' : ''}}">
+                                    <ul class="list-group">
+                                        <li class="list-group-item"
+                                            ng-repeat="sub in menu.subMenus" ng-if="!sub.checkVisibility || sub.checkVisibility()">
+                                            <a ng-click="changeRoute(sub.route)">
+                                                {{sub.title}}
+                                                <kama-document-stats ng-if="sub.stats" types="sub.stats"></kama-document-stats>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sidebar-footer" class="row">
+                    <a href="#!/"><div class="col-xs-3"><span class="temp-fix">@ViewBag.Strings.HomePage</span><i class="fa fa-home"></i></div></a>
+                    <div id="mfaNightMode" class="col-xs-3"><span class="temp-fix">@ViewBag.Strings.Theme</span><i class="fa fa-adjust"></i></div>
+                    <div id="sidebar-footer-fullscreen" class="col-xs-3"><span class="temp-fix">@ViewBag.Strings.FullScreen</span><i class="fa fa-arrows-alt"></i></div>
+                    @*<a href="#!/message"><div class="col-xs-3"><span>@ViewBag.Strings.Messages</span><i class="fa fa-comment"></i></div></a>*@
+                    <a ng-click="logout()"><div class="col-xs-3"><span>@ViewBag.Strings.Exit</span><i class="fa fa-power-off"></i></div></a>
+                </div>
+            </div>
+            <div id="toolbar" class="row">
+                <div class="col-xs-12">
+                    <div id="sidebar-switch"><i class="fa fa-bars" aria-hidden="true"></i></div>
+                    <a class="toolbar-dropdown" href="{{'/Help#' + helpSubDirectory}}" target="_blank">@ViewBag.Strings.Help</a>
+
+                    <div class="toolbar-dropdown" ng-if="currentUserPositions.length > 1">
+                        @ViewBag.Strings.ChangePosition
+                        <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                        <ul ng-if="currentUserPositions.length > 1">
+                            <li ng-repeat="position in currentUserPositions" ng-click="changePosition(position)">
+                                <i class="fa fa-check-square-o" aria-hidden="true" style="position: relative; top: 2px; margin-left: 5px;" ng-if="position.ID == currentUserPosition.ID"></i>
+                                <kama-display-enum model="position.Type" enum="EvaluationPositionType"></kama-display-enum>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="content" class="row">
+                <div class="col-xs-12">
+                    <ng-view></ng-view>
+
+                    <div id="loader-parent" style="display: none;">
+                        <div class="showbox">
+                            <div class="loader">
+                                <svg class="circular" viewBox="25 25 50 50">
+                                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // toggle sidebar
+        $("#sidebar-switch").click(function () {
+            $('#sidebar').toggleClass('toggle-sidebar');
+            $('#wrapper').toggleClass('toggle-sidebar');
+        });
+        $("#sidebar-close").click(function () {
+            $('#sidebar').toggleClass('toggle-sidebar');
+            $('#wrapper').toggleClass('toggle-sidebar');
+        });
+
+        // first load on mobile
+        if (window, innerWidth < 767) {
+            $("#sidebar-close").click();
+        }
+
+        // click on sidebar menu items
+        $("#sidebar-menu-container .list-group-item a").click(function () {
+            if (window, innerWidth < 767)
+                $("#sidebar-close").click();
+        })
+
+        // sidebar footer functions - fullscreen toggle
+        $("#sidebar-footer-fullscreen").click(function () {
+            if ((document.fullScreenElement && document.fullScreenElement !== null) || (!document.mozFullScreen && !document.webkitIsFullScreen)) {
+                if (document.documentElement.requestFullScreen) {
+                    document.documentElement.requestFullScreen();
+                } else if (document.documentElement.mozRequestFullScreen) {
+                    document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.webkitRequestFullScreen) {
+                    document.documentElement.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+                }
+            } else {
+                if (document.cancelFullScreen) {
+                    document.cancelFullScreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitCancelFullScreen) {
+                    document.webkitCancelFullScreen();
+                }
+            }
+        });
+    });
+    $("#mfaNightMode").click(function () {
+        if (localStorage.getItem('mfaNightMode') === null
+            || localStorage.getItem('mfaNightMode') === 'True')
+            localStorage.setItem('mfaNightMode', 'False');
+        else
+            localStorage.setItem('mfaNightMode', 'True');
+
+        if (localStorage.getItem('mfaNightMode') === 'True')
+            $('body').addClass('mfaNightMode');
+        else
+            $('body').removeClass('mfaNightMode');
+    });
+</script>
+<script src="~/app/dist/plugins/angular/angular.min.js"></script>
+<script src="~/app/dist/plugins/angular/angular-sanitize.min.js"></script>
+<script src="~/app/dist/plugins/angular/angular-route.min.js"></script>
+<script src="~/app/dist/plugins/angular/angular-animate.min.js"></script>
+<script src="~/app/dist/plugins/angular/smart-table.min.js"></script>
+<script src="~/app/dist/plugins/angular/ngStorage.min.js"></script>
+<script src="~/app/dist/plugins/angular/tree-grid-directive.js"></script>
+<script src="~/app/dist/plugins/kama/kama-angularjs.min.js"></script>
+<script src="~/app/dist/plugins/kama/lvl-uuid.js"></script>
+<script src="~/app/dist/plugins/kama/lvl-drag-drop.js"></script>

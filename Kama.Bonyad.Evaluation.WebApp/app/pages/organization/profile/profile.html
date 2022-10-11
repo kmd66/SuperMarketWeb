@@ -1,0 +1,27 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">پروفایل</div>
+            <div class="panel-body">
+                <form ng-submit="profile.main.save()">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <kama-error errors="profile.main.model.errors"></kama-error>
+                        </div>
+
+                        <div class="col-xs-12">
+                            <kama-real-user obj="profile.main" ng-if="profile.main.positionType == 20"></kama-real-user>
+                            <kama-legal-user obj="profile.main" ng-if="profile.main.positionType == 21"></kama-legal-user>
+                        </div>
+
+                        <div class="col-xs-12 btn-container">
+                            <hr />
+                            <button type="submit" class="btn btn-success btn-min-width">ثبت</button>
+                            <button type="button" class="btn btn-cancel btn-min-width" ng-click="profile.main.back()">بازگشت</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,353 @@
+﻿@import 'variables';
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+.link {
+    color: blue;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.input-ltr {
+    direction: ltr;
+}
+
+input[type="email"] {
+    direction: ltr;
+}
+
+.panel-heading-btn {
+    padding: 8px 15px;
+
+    button {
+        padding: 2px 8px;
+        margin-right: 7px;
+    }
+}
+
+.panel-heading h3 {
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: normal;
+    width: 75%;
+    padding-top: 0px;
+}
+
+div.success {
+    background-color: #dff0d8 !important;
+}
+
+div.danger {
+    background-color: #f2dede !important;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.well.memo {
+    white-space: pre-line;
+    text-align: justify;
+    margin-bottom: 0;
+}
+
+.underline {
+    cursor: pointer;
+
+    &:hover {
+        border-bottom: 1px outset;
+    }
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.margin-bottom-zero {
+    margin-bottom: 0;
+}
+
+.error-items {
+    column-count: 3;
+    margin-top: 15px;
+
+    p {
+        margin: 10px 0 0;
+
+        &:first-child {
+            margin: 0;
+        }
+
+        &:last-child {
+            margin-bottom: 10px;
+        }
+    }
+}
+
+.form-info {
+    color: #767676;
+    margin-top: 5px;
+    font-size: 11px;
+}
+
+.btn .glyphicon {
+    top: 3px;
+    margin-left: 6px;
+}
+
+.btn .fa {
+    position: relative;
+    top: 1px;
+    margin-right: 5px;
+}
+
+.padding-2x {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+select.form-control {
+    cursor: pointer;
+}
+
+.form-value {
+    color: #005400;
+
+    &.block {
+        display: block;
+        white-space: pre-wrap;
+        padding: 8px 10px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+    }
+}
+
+fieldset {
+    border: none;
+    padding: 0px;
+    min-width: 1px;
+    margin: 0px;
+}
+
+.tab-content-container {
+    margin-top: 20px;
+}
+
+.nav li.success a {
+    background-color: #dff0d8;
+    animation: fadeIn 0.8s;
+}
+
+.nav li.success.active a {
+    background-color: #fff;
+    color: #3c763d;
+    animation: fadeIn 0.8s;
+}
+
+.nav li.danger a {
+    background-color: #f2dede;
+    animation: fadeIn 0.8s;
+}
+
+.nav li.danger.active a {
+    background-color: #fff;
+    color: #a94442;
+    animation: fadeIn 0.8s;
+}
+
+.btn-container {
+    text-align: left;
+}
+
+.btn-min-width {
+    min-width: 70px;
+}
+
+label.required, .panel-heading.required {
+    color: #d32f2f;
+}
+
+.checkbox-label {
+    cursor: pointer;
+    font-weight: normal;
+
+    &:hover {
+        font-weight: bold;
+    }
+
+    input[type='checkbox'], input[type='radio'] {
+        position: relative;
+        top: 3px;
+        margin-left: 5px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.tooltip > .tooltip-inner {
+    font-family: Vazir;
+    font-size: 11px;
+    padding: 4px;
+    min-width: 70px;
+}
+
+.checkbox-panel {
+    input[type='checkbox'] {
+        &:checked + span {
+            color: red;
+        }
+    }
+}
+
+.panel-action {
+    float: left;
+    position: relative;
+    left: 25px;
+    top: 3px;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.panel-heading.collapsible {
+    cursor: pointer;
+}
+
+.panel-heading.collapsible:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';
+    content: "\e113";
+    float: left;
+    cursor: pointer;
+}
+
+.panel-heading.collapsible.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e114";
+}
+
+@media screen and (max-width: 767px) {
+    .error-items {
+        column-count: 1;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 992px) {
+    .error-items {
+        column-count: 2;
+    }
+}
+
+/*cartable*/
+.cartable-filter {
+    float: right;
+    margin-left: 15px;
+
+    a {
+        cursor: pointer;
+        line-height: 1.2;
+        text-decoration: none;
+
+        div {
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            border: 1px solid #000;
+            float: right;
+            margin: 6px 0px 0px 4px;
+        }
+    }
+}
+
+.cartable-filter-tree {
+    border: 1px solid #d8d8d8;
+    border-width: 0px 1px 1px 0px;
+    background-color: white;
+    border-radius: 4px;
+}
+
+.cartable-filter-selected {
+    border: 1px solid $sidebarBackgroundColor;
+    padding: 0px 5px;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    border-radius: 4px;
+    transition: all 0.5s ease;
+}
+
+.cartable-action {
+    float: left;
+    margin-right: 5px;
+    cursor: pointer;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    padding: 2px 5px;
+    margin-bottom: -2px;
+    margin-top: -2px;
+    border-radius: 4px;
+
+    &:hover {
+        background-color: $sidebarBackgroundColor;
+        color: #fff;
+        transition: background-color .5s ease-out .1s, color .5s;
+    }
+
+    span {
+        position: relative;
+        font-size: 11px;
+        margin-left: 5px;
+        display: inline-block;
+        text-decoration: none;
+    }
+}
+
+/* MODAL */
+.modal-body {
+    max-height: calc(100vh - 185px);
+    overflow-y: auto;
+}
+
+.modal-header {
+    background-color: #ededed;
+    border-radius: 4px 4px 0 0;
+    margin-right: 1px;
+}
+
+.modal-footer {
+    margin-right: 1px;
+}
+
+/*bold bootstrap alert colors*/
+.alert-warning {
+    color: #785d2d;
+    background-color: #ede2a9;
+    border-color: #d2c19f;
+}
+
+.alert-danger {
+    color: #973533;
+    background-color: #e7c5c5;
+    border-color: #be979e;
+}
+
+.alert-info {
+    color: #23607e;
+    background-color: #c1e8fb;
+    border-color: #93bfc8;
+}
+
+.panel-info {
+    border-color: #93bfc8;
+}
+
+.panel-info > .panel-heading {
+    color: #23607e;
+    background-color: #c1e8fb;
+    border-color: #93bfc8;
+}

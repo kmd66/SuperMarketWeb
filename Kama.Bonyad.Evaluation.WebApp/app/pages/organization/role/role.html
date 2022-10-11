@@ -1,0 +1,22 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span ng-if="role.main.state === 'cartable'">نقش‌ها</span>
+                <span ng-if="role.main.state === 'add'">افزودن نقش جدید</span>
+                <span ng-if="role.main.state === 'edit'">ویرایش نقش</span>
+            </div>
+            <div class="panel-body">
+                <kama-role-cartable main="role.main"
+                                    cartable="role.cartable"
+                                    search="role.search"
+                                    ng-show="role.main.state === 'cartable'"></kama-role-cartable>
+
+                <kama-role-modify main="role.main"
+                                  modify="role.modify"
+                                  cartable="role.cartable"
+                                  ng-show="['add', 'edit'].indexOf(role.main.state) !== -1"></kama-role-modify>
+            </div>
+        </div>
+    </div>
+</div>

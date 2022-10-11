@@ -1,0 +1,24 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span ng-if="application.main.state === 'cartable'">لیست برنامه ها</span>
+                <span ng-if="application.main.state === 'add'">اضافه کردن یک برنامه</span>
+                <span ng-if="application.main.state === 'edit'">ویرایش یک برنامه</span>
+            </div>
+            <div class="panel-body">
+                <kama-application-modify main="application.main"
+                                         modify="application.modify"
+                                         client="application.client"
+                                         cartable="application.cartable"
+                                         ng-show="['add', 'edit'].indexOf(application.main.state) !== -1"></kama-application-modify>
+
+                <kama-application-cartable main="application.main"
+                                           cartable="application.cartable"
+                                           search="application.search"
+                                           modify="application.modify"
+                                           ng-show="application.main.state === 'cartable'"></kama-application-cartable>
+            </div>
+        </div>
+    </div>
+</div>

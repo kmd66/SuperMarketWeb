@@ -1,0 +1,22 @@
+﻿<div class="row">
+    <div class="btn-group-vertical col-xs-12" style="margin-top: 15px">
+        <a href="#!login" class="btn btn-primary">ورود به سامانه</a>
+        <a href="#!signup/real" class="btn btn-cancel" ng-if="appInfo.type === 'internet'">ثبت نام اشخاص حقیقی</a>
+        <a href="#!signup/legal" class="btn btn-cancel" ng-if="appInfo.type === 'internet'">ثبت نام اشخاص حقوقی</a>
+    </div>
+    <div class="btn-group-vertical col-xs-12" style="margin-top: 15px">
+        <a href="#!index" class="btn btn-cancel" ng-style="activeTab === 'index' && {'font-weight': 'bold'}">صفحه اصلی</a>
+        <a href="/help" target="_blank" class="btn btn-cancel">راهنمای کار با سامانه</a>
+        <a href="#!faq-o" class="btn btn-cancel" ng-style="activeTab === 'faq' && {'font-weight': 'bold'}">سوالات متداول</a>
+        <a href="#!contact-o" class="btn btn-cancel" ng-style="activeTab === 'contact' && {'font-weight': 'bold'}">تماس با ما</a>
+        <!--<a href="#!survey" class="btn btn-cancel" ng-style="activeTab === 'survey' && {'font-weight': 'bold'}">نظرسنجی</a>-->
+    </div>
+
+    <div class="col-xs-12" style="margin-top:15px; text-align: center">
+        <p>کاربران آنلاین: {{onlineUsersCount}} نفر</p>
+        <hr>
+        <p>لطفا از آخرین نسخه مرورگر خود استفاده کنید. <a href="https://www.cyberpolice.ir/faq/60451" target="_blank">(چرا؟)</a></p>
+        <p><a href="https://www.google.com/chrome/" target="_blank">دانلود آخرین نسخه مرورگر کروم</a></p>
+        <p><a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank">دانلود آخرین نسخه مرورگر فایرفاکس</a></p>
+    </div>
+</div>

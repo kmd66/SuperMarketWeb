@@ -1,0 +1,86 @@
+﻿<kama-outside-template header="{{signup.main.header}}" hide-footer="true">
+    <!--evaluation-->
+    <div class="row" ng-if="signup.main.state === 'evaluation'">
+        <div class="col-xs-12" ng-if="signup.main.type === 'real'">
+
+        </div>
+
+        <div class="col-xs-12" ng-if="signup.main.type === 'legal'">
+
+        </div>
+
+        <div class="col-xs-12 btn-container">
+            <hr />
+            <button type="button" class="btn btn-success" ng-click="signup.main.state = 'verify'" ng-if="signup.main.state === 'evaluation'">تایید و ادامه</button>
+            <a href="#!index" class="btn btn-cancel">انصراف</a>
+        </div>
+    </div>
+
+    <!--verify-->
+    <div class="row" ng-if="signup.main.state === 'verify'">
+        <div class="col-xs-12">
+            <p>برای ادامه فرایند ثبت نام، ابتدا شماره تلفن همراه خود را وارد نموده و پس از زدن دکمه تایید، کد فعال‌سازی دریافت شده از طریق پیامک را وارد نمایید.</p>
+            <hr />
+        </div>
+        <div class="form-group col-xs-12 col-sm-7 col-lg-5" ng-if="signup.main.securityCodeState === 'not-sent'">
+            <form ng-submit="signup.main.sendSecurityCode()">
+                <label class="required">تلفن همراه</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="signup.main.model.CellPhone" kama-prevent="letter" autofocus maxlength="11" />
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-primary" ng-disabled="!signup.main.model.CellPhone || signup.main.model.CellPhone.length !== 11">تایید و دریافت کد فعال‌سازی</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <form ng-submit="signup.main.verify()">
+            <div ng-if="signup.main.securityCodeState === 'sent'">
+                <div class="col-xs-12">
+                    <p>کد فعال‌سازی برای شماره تلفن <b>{{signup.main.model.CellPhone}}</b> ارسال شد.</p>
+                </div>
+                <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                    <label class="required">کد فعال‌سازی</label>
+                    <input type="text" class="form-control" ng-model="signup.main.model.SecurityCode" kama-autofocus />
+                </div>
+            </div>
+            <div class="col-xs-12 btn-container">
+                <hr />
+                <button type="submit" class="btn btn-success" ng-if="signup.main.securityCodeState === 'sent'">تایید و ادامه</button>
+                <a href="#!index" class="btn btn-cancel">انصراف</a>
+            </div>
+        </form>
+    </div>
+
+    <!--signup-->
+    <div class="row" ng-if="signup.main.state === 'signup'">
+        <form ng-submit="signup.main.register()">
+            <div class="col-xs-12">
+                <kama-error errors="signup.main.model.errors"></kama-error>
+                <p><strong>توجه:</strong> پر کردن موارد مشخص شده با رنگ <label class="required">قرمز</label> اجباری است.</p>
+                <p>کلمه عبور باید حداقل 10 کاراکتر باشد.</p>
+                <hr />
+            </div>
+
+            <div class="col-xs-12 padding-2x">
+                <kama-real-user obj="signup.main" enable-national-code="true" ng-if="signup.main.type === 'real'"></kama-real-user>
+                <kama-legal-user obj="signup.main" enable-national-code="true" ng-if="signup.main.type === 'legal'"></kama-legal-user>
+
+                <div class="row">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4"><label class="required">کلمه عبور</label><input type="password" class="form-control" ng-model="signup.main.model.Password"></div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4"><label class="required">تکرار کلمه عبور</label><input type="password" class="form-control" ng-model="signup.main.model.PasswordRepeat"></div>
+                    <div class="form-group col-xs-12">
+                        <div class="checkbox">
+                            <label class="checkbox-label"><input type="checkbox" ng-model="signup.main.model.HasRecord">سابقه طرح شکوائیه در مرکز را دارم</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 btn-container">
+                <hr />
+                <button type="submit" class="btn btn-success btn-min-width">ثبت</button>
+                <a href="#!index" class="btn btn-cancel">انصراف</a>
+            </div>
+        </form>
+    </div>
+</kama-outside-template>

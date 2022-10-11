@@ -1,0 +1,73 @@
+﻿<style>
+    #content > div {
+        background: url(app/assets/images/pattern.png);
+    }
+    img {
+        display: block;
+        margin: 0 auto;
+        height: 120px;
+    }
+</style>
+
+<img src="/app/assets/images/app-logo.png" alt="بنیاد مستضعفان انقلاب اسلامی" />
+<div id="login-container">
+    <div id="login-wrapper">
+        <h1>سامانه ارزیابی</h1>
+
+        <!--login-->
+        <form name="loginForm" role="form" ng-submit="login.main.getToken()" ng-show="login.main.state === 'login'">
+            <div class="form-group"><label>نام کاربری</label><input type="text" class="form-control" ng-model="login.main.model.Username" placeholder="کد ملی یا شناسه ملی" autocomplete="off" required kama-autofocus /></div>
+            <div class="form-group"><label>کلمه عبور</label><input type="password" class="form-control" ng-model="login.main.model.Password" required /></div>
+            <div class="form-group hover-text"><span ng-click="login.main.state = 'forgot-password-type'">کلمه عبورم را فراموش کرده‌ام</span></div>
+            <div class="form-group" style="margin-top: 15px" ng-show="login.main.tokenCaptcha">
+                <img ng-src="{{login.main.tokenCaptcha}}" style="height: 100%; width: 100%" />
+                <div class="form-group hover-text"><span ng-click="login.main.refreshCaptcha('tokenCaptcha')">تغییر تصویر</span></div>
+                <label style="margin-top: 10px">حروف امنیتی را وارد کنید</label>
+                <input type="text" class="form-control" ng-model="login.main.model.tokenCaptcha" autocomplete="off" />
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-success login-button" ng-disabled="loginForm.$invalid">ورود</button>
+                <button type="button" class="btn btn-primary login-button" ng-click="login.main.state = 'signup'" ng-if="appInfo.type === 'internet'">ثبت نام و دریافت کد کاربری</button>
+            </div>
+        </form>
+
+        <!--signup type-->
+        <div ng-show="login.main.state === 'signup'">
+            <p>در صورتی که قبلا در این سامانه ثبت نام نکرده‌اید، می‌توانید با انتخاب یکی از گزینه‌های زیر فرایند ثبت نام خود را شروع کنید.</p>
+            <a href="#!signup/real" class="btn btn-primary login-button">ثبت نام اشخاص حقیقی</a>
+            <a href="#!signup/legal" class="btn btn-primary login-button">ثبت نام اشخاص حقوقی</a>
+            <p style="margin: 20px 0 0">قبلا ثبت نام کرده‌اید؟ <span class="underline" ng-click="login.main.state = 'login'">ورود به سامانه</span></p>
+        </div>
+
+        <!--forgot password type-->
+        <div ng-show="login.main.state === 'forgot-password-type'">
+            <button type="button" class="btn btn-primary login-button" ng-click="login.main.state = 'forgot-password'; login.main.forgotPasswordType = 'sms'">بازنشانی کلمه عبور با شماره تلفن</button>
+            <button type="button" class="btn btn-primary login-button" ng-click="login.main.state = 'forgot-password'; login.main.forgotPasswordType = 'email'" disabled>بازنشانی کلمه عبور با ایمیل</button>
+            <p style="margin: 20px 0 0"><span class="underline" ng-click="login.main.state = 'login'">ورود به سامانه</span></p>
+        </div>
+
+        <!--forgot password-->
+        <form name="forgotPassword" role="form" ng-submit="login.main.forgotPassword()" ng-show="login.main.state === 'forgot-password'">
+            <div class="form-group"><label>نام کاربری</label><input type="text" class="form-control" ng-model="login.main.model.Username" autocomplete="off" required kama-autofocus /></div>
+            <div class="form-group" ng-if="login.main.forgotPasswordType === 'sms'"><label>شماره تلفن همراه</label><input type="text" class="form-control" ng-model="login.main.model.CellPhone" autocomplete="off" maxlength="11" kama-prevent="letter" required /></div>
+            <div class="form-group" ng-if="login.main.forgotPasswordType === 'email'"><label>ایمیل</label><input type="text" class="form-control" ng-model="login.main.model.Email" autocomplete="off" required /></div>
+            <div class="form-group" style="margin-top: 15px" ng-show="login.main.forgotPasswordCaptcha">
+                <img ng-src="{{login.main.forgotPasswordCaptcha}}" style="height: 100%; width: 100%;" />
+                <div class="form-group hover-text"><span ng-click="login.main.refreshCaptcha('forgotPasswordCaptcha')">تغییر تصویر</span></div>
+                <label style="margin-top: 10px">حروف امنیتی را وارد کنید</label>
+                <input type="text" class="form-control" ng-model="login.main.model.forgotPasswordCaptcha" autocomplete="off" />
+            </div>
+            <button type="submit" class="btn btn-success login-button" ng-disabled="forgotPassword.$invalid">بازنشانی کلمه عبور</button>
+            <p style="margin: 20px 0 0"><span class="underline" ng-click="login.main.state = 'login'">ورود به سامانه</span></p>
+        </form>
+
+        <!--forgot password message-->
+        <div ng-show="login.main.state === 'message'">
+            <div class="alert alert-success" style="margin-bottom: 0; text-align: justify">
+                <p>{{login.main.message}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p style="text-align: center; margin-top: 15px"><a href="#!/index">بازگشت به صفحه اصلی ⟵</a></p>

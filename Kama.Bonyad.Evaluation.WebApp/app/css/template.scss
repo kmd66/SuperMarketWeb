@@ -1,0 +1,428 @@
+﻿@import 'variables';
+@import 'font-vazir';
+@import 'thin-bootstrap';
+@import 'animation';
+@import 'loader';
+
+body {
+    font-family: Vazir, tahoma;
+}
+
+#alert-container, #unique-alert-container {
+    width: 50vw;
+    left: 25vw;
+    text-align: center;
+    position: fixed;
+    z-index: 9999;
+    margin-top: 10px;
+}
+
+/* wrapper */
+#wrapper {
+    @if $hasSidebar == true {
+        padding-right: $sidebarWidth + 15px;
+        z-index: 0;
+    }
+
+    height: 100vh;
+    padding-left: 15px;
+}
+
+/* sidebar */
+#sidebar {
+    position: fixed;
+    right: 0;
+    background-color: $sidebarBackgroundColor;
+    color: $sidebarColor;
+    width: $sidebarWidth;
+    z-index: 10;
+    height: 100vh;
+    overflow: auto;
+
+    &::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        background-color: rgb(237, 237, 237);
+    }
+
+    &::-webkit-scrollbar {
+        width: 6px;
+        background-color: rgb(237, 237, 237);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgb(64, 96, 128);
+    }
+}
+
+#sidebar.toggle-sidebar {
+    display: none;
+}
+
+#wrapper.toggle-sidebar {
+    padding-right: 15px !important;
+}
+
+#sidebar-close {
+    display: none;
+    width: $toolbarHeight;
+    height: $toolbarHeight;
+    position: fixed;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+
+    i {
+        color: $sidebarColor;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20px;
+    }
+}
+
+@if $hasSidebarTitle == true {
+    #sidebar-title {
+        padding-top: 5px;
+    }
+
+    #sidebar-title-image {
+        text-align: center;
+        padding-top: 5px;
+
+        img {
+            height: $sidebarTitleImageHeight;
+        }
+    }
+
+    #sidebar-title-text {
+        padding: 5px 5px 15px;
+        overflow: hidden;
+        border-bottom: 1px solid darken($sidebarColor, 50%);
+        text-align: center;
+
+        h1 {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: normal;
+            font-size: 15px;
+            margin: 0;
+            user-select: none;
+            cursor: default;
+        }
+    }
+}
+@else {
+    #sidebar-title {
+        display: none;
+    }
+}
+
+@if $hasSidebarUser == true {
+    #sidebar-user {
+        padding: 10px 0;
+        border-bottom: 1px solid darken($toolbarBackgroundColor, 50%);
+    }
+
+    #sidebar-user-picture {
+        text-align: center;
+
+        img {
+            width: 60px;
+            height: 60px;
+            border: 3px solid $sidebarColor;
+            border-radius: 50%;
+        }
+    }
+
+    #sidebar-user-info {
+        min-height: 60px;
+        line-height: 60px;
+
+        span {
+            display: inline-block;
+            vertical-align: middle;
+            line-height: normal;
+            user-select: none;
+            cursor: default;
+        }
+    }
+}
+@else {
+    #sidebar-user {
+        display: none;
+    }
+}
+
+#sidebar-menu > div {
+    padding: 0;
+}
+
+#sidebar-menu-container {
+    margin-bottom: $sidebarFooterHeight;
+
+    .panel-default {
+        margin-top: 0;
+        border: none;
+        border-radius: 0;
+    }
+
+    .panel-heading {
+        background-color: darken($sidebarBackgroundColor, 3%);
+        color: $sidebarColor;
+        cursor: pointer;
+        border-radius: 0;
+        border-bottom: 1px solid darken($toolbarBackgroundColor, 50%); // to be or not to be?!
+        &:hover {
+            color: darken($sidebarColor, 20%);
+        }
+
+        i {
+            &:nth-child(1) {
+                margin-left: 10px;
+            }
+
+            &:nth-child(2) {
+                float: left;
+                font-size: 10px;
+                top: 5px;
+                position: relative;
+            }
+        }
+    }
+
+    .list-group {
+        padding: 0;
+    }
+
+    .list-group-item {
+        background-color: $sidebarColor;
+        cursor: pointer;
+        padding: 0;
+
+        &:hover {
+            font-weight: bold;
+        }
+
+        a {
+            text-decoration: none;
+            color: $sidebarBackgroundColor;
+            display: block;
+            padding: 10px 15px;
+        }
+    }
+}
+
+#sidebar-footer {
+    width: $sidebarWidth;
+    height: $sidebarFooterHeight;
+    background-color: darken($sidebarBackgroundColor, 13%);
+    color: lighten($sidebarBackgroundColor, 33%);
+    bottom: 0;
+    right: 15px;
+    margin-bottom: 0;
+    position: fixed;
+    text-align: center; // bug: not centering all spans
+    a {
+        color: lighten($sidebarBackgroundColor, 33%);
+    }
+
+    div {
+        height: $sidebarFooterHeight;
+        position: relative;
+        cursor: pointer;
+        margin-top: 2px;
+
+        span {
+            font-size: 10px;
+        }
+        // temp fix
+        span.temp-fix {
+            left: 5px;
+            position: relative;
+        }
+
+        @media screen and (max-width: 767px) {
+            span.temp-fix {
+                left: 0px;
+            }
+        }
+
+        &:hover {
+            background-color: darken($sidebarBackgroundColor, 5%);
+            color: $sidebarColor;
+
+            a {
+                color: $sidebarColor;
+            }
+        }
+    }
+
+    i {
+        position: absolute;
+        top: 68%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* toolbar */
+@if $hasToolbar == true {
+    #toolbar {
+        background-color: $toolbarBackgroundColor;
+    }
+
+    #toolbar > div {
+        height: $toolbarHeight;
+        padding: 0 0 0 15px;
+    }
+
+    @if $hasSidebar == true {
+        #sidebar-switch {
+            width: $toolbarHeight;
+            height: $toolbarHeight;
+            position: relative;
+            cursor: pointer;
+            display: inline-block;
+
+            i {
+                color: #000;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+    @else {
+        #sidebar-switch {
+            display: none;
+        }
+    }
+
+    .toolbar-dropdown {
+        height: $toolbarHeight;
+        line-height: $toolbarHeight;
+        user-select: none;
+        padding: 0 15px;
+        float: left;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+        color: #000;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: none;
+            background-color: $sidebarBackgroundColor;
+            color: #FFF;
+        }
+
+        &:focus {
+            text-decoration: none;
+        }
+
+        .fa-chevron-down {
+            font-size: 10px;
+        }
+
+        img {
+            height: $toolbarHeight / 1.9;
+            width: $toolbarHeight / 1.9;
+            border: 2px solid darken($toolbarBackgroundColor, 30%);
+            border-radius: 50%;
+        }
+
+        ul {
+            width: 400px;
+            background-color: $sidebarBackgroundColor;
+            color: #000;
+            position: absolute;
+            left: 0;
+            top: 40px;
+            display: none;
+            padding: 5px 0 0 0;
+            cursor: auto;
+
+            li {
+                background-color: #FFF;
+                list-style: none;
+                margin: 0 5px 5px 5px;
+                padding: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: #EEE;
+                }
+            }
+        }
+    }
+
+    .toolbar-dropdown:hover > ul {
+        display: block;
+    }
+}
+@else {
+    #toolbar {
+        display: none;
+    }
+}
+
+/* content */
+#content {
+    background-color: #FFF;
+}
+
+#content > div {
+    $sumHeight: 0;
+    padding: 15px;
+    overflow-y: scroll;
+
+    @if $hasToolbar == true {
+        $sumHeight: $sumHeight + $toolbarHeight;
+    }
+
+    height: calc(100vh - #{$sumHeight});
+}
+
+@media screen and (max-width: 767px) {
+    /* wrapper */
+    #wrapper {
+        padding-right: 15px;
+    }
+
+    /* sidebar */
+    @if $hasSidebar == true {
+        #sidebar {
+            display: block;
+            width: 100%
+        }
+
+        #sidebar.toggle-sidebar {
+            display: none;
+        }
+
+        #sidebar-close {
+            display: inline-block;
+        }
+
+        #sidebar-user {
+            display: none;
+        }
+
+        #sidebar-footer {
+            width: 100%;
+        }
+    }
+    @else {
+        #sidebar {
+            display: none;
+        }
+    }
+
+    /* toolbar */
+    .toolbar-dropdown:hover > ul {
+        width: 100vw;
+        position: fixed;
+    }
+}

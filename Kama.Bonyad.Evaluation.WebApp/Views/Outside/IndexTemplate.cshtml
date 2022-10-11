@@ -1,0 +1,46 @@
+﻿<input name="__isAuthenticated" type="hidden" value="false" />
+
+<style>
+    #wrapper {
+        padding-right: 15px;
+    }
+
+    #content > div {
+        height: 100vh;
+        overflow-y: auto;
+    }
+</style>
+<div id="unique-alert-container"></div>
+<div id="alert-container"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div id="wrapper">
+            <div id="content" class="row">
+                <div class="col-xs-12">
+                    <ng-view></ng-view>
+
+                    <div id="loader-parent" style="display: none;">
+                        <div class="showbox">
+                            <div class="loader">
+                                <svg class="circular" viewBox="25 25 50 50">
+                                    <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/app/dist/plugins/angular/angular.min.js"></script>
+<script src="~/app/dist/plugins/angular/angular-sanitize.min.js"></script>
+<script src="~/app/dist/plugins/angular/angular-route.min.js"></script>
+<script src="~/app/dist/plugins/angular/angular-animate.min.js"></script>
+<script src="~/app/dist/plugins/angular/smart-table.min.js"></script>
+<script src="~/app/dist/plugins/angular/ngStorage.min.js"></script>
+<script src="~/app/dist/plugins/angular/tree-grid-directive.js"></script>
+<script src="~/app/dist/plugins/kama/kama-angularjs.min.js"></script>
+<script src="~/app/dist/plugins/kama/lvl-uuid.js"></script>
+<script src="~/app/dist/plugins/kama/lvl-drag-drop.js"></script>

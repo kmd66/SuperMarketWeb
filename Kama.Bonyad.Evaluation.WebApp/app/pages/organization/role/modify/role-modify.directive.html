@@ -1,0 +1,29 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <kama-error errors="modify.model.errors"></kama-error>
+    </div>
+
+    <form ng-submit="modify.save()">
+        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+            <label class="required">عنوان</label>
+            <input type="text" class="form-control" ng-model="modify.model.Name">
+        </div>
+        <div class="col-xs-12 col">
+            <div class="panel panel-default">
+                <div class="panel-heading">دسترسی‌ها</div>
+                <div class="panel-body">
+                    <kama-checkboxes list="modify.permissions"
+                                     selected="modify.model.Permissions"
+                                     display-name="Title"
+                                     display="tree"></kama-checkboxes>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 btn-container">
+            <hr />
+            <button type="submit" class="btn btn-success btn-min-width">ثبت</button>
+            <button type="button" class="btn btn-cancel btn-min-width" ng-click="main.changeState.cartable()">بازگشت</button>
+        </div>
+    </form>
+</div>

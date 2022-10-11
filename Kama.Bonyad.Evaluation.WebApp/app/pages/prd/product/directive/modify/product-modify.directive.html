@@ -1,0 +1,60 @@
+﻿
+<div class="form-group col-xs-12 col-sm-6 col-md-3">
+    <label class="required">نام</label>
+    <input class="form-control" ng-model="modify.model.Name" />
+</div>
+
+<div class="form-group col-xs-12 col-sm-6 col-md-3">
+    <label class="required">والد</label>
+    <kama-select obj="modify.parentProductDropdown"></kama-select>
+</div>
+
+<div class="form-group col-xs-12"></div>
+<div class="form-group col-xs-12 col-sm-6 col-md-3">
+    <label class="required">قیمت</label>
+    <input class="form-control" kama-prevent="letter" ng-model="modify.model.Price" />
+</div>
+
+<div class="form-group col-xs-12 col-sm-6 col-md-3">
+    <label>تخفیف</label>
+    <input class="form-control" kama-prevent="letter" ng-model="modify.model.Discount" />
+</div>
+
+<div class="form-group col-xs-12">
+    <label class="required">توضیح</label>
+    <textarea class="form-control"
+              rows="4"
+              ng-model="modify.model.Comment"></textarea>
+</div>
+
+<div class="col-xs-12" style="margin-top:10px">
+    <ul class="nav nav-tabs">
+        <li ng-class="{'active': modify.tabNumber == 1}">
+            <a href="" ng-click="modify.tabNumber = 1">تصویر</a>
+        </li>
+        <li ng-class="{'active': modify.tabNumber == 2}">
+            <a href="" ng-click="modify.tabNumber = 2; ">برچسب</a>
+        </li>
+        <li ng-class="{'active': modify.tabNumber == 3}">
+            <a href="" ng-click="modify.tabNumber = 3; ">اطلاعات جنس</a>
+        </li>
+    </ul>
+</div>
+
+<div class="tab-pane" ng-show="modify.tabNumber == 1">
+        <img-attachment obj="modify.img"></img-attachment>
+</div>
+
+<kama-product-tag main="main"
+                  modify="modify"
+                  tag="tag"></kama-product-tag>
+<kama-product-information main="main"
+                          modify="modify"></kama-product-information>
+
+<div class="col-xs-12 "><hr /></div>
+<!--button-->
+
+<div class="col-xs-12 btn-container">
+    <button ng-click="modify.save()" class="btn btn-success btn-min-width">ثبت</button>
+    <button ng-click="main.changeState.cartable()" type="button" class="btn btn-cancel btn-min-width">بازگشت</button>
+</div>

@@ -1,0 +1,4 @@
+routes:
+	place (for add/edit state, if the page is supposed to split into two files or it's state based page)
+	place-list (for simple list grid pages)
+	request-cartable (for actual cartables)

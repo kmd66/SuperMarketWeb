@@ -1,0 +1,174 @@
+﻿<!DOCTYPE html>
+<html lang="fa" dir="rtl" ng-app="evaluation">
+<head>
+    <title>سامانه ارزیابی</title>
+
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#2a3f54">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="مؤدی یا اداره امور مالیاتی می‌توانند ظرف یک ماه از تاریخ ابلاغ رأی قطعی هیأت حل اختلاف مالیاتی، به استناد عدم رعایت قوانین و مقررات موضوعه یا نقص رسیدگی، با اعلام دلایل کافی به شورای عالی مالیاتی شکایت و نقض رأی و تجدید رسیدگی را درخواست کنند." />
+
+    <link href="~/favicon.ico?v=2" rel="icon" />
+    <link href="~/app/dist/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/app/dist/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/app/dist/plugins/select2/select2.min.css" rel="stylesheet" />
+    <link href="~/app/dist/plugins/select2/select2-bootstrap.min.css" rel="stylesheet" />
+    <link href="~/app/dist/plugins/kama/kamadatepicker.min.css" rel="stylesheet" />
+    <link href="~/app/dist/plugins/kama/kama-angularjs.min.css" rel="stylesheet" />
+    <link href="~/app/dist/plugins/angular/treeGrid.css" rel="stylesheet" />
+
+    <script src="~/app/dist/plugins/jquery/jquery.min.js"></script>
+    <script src="~/app/dist/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/app/dist/plugins/select2/select2.min.js"></script>
+    <script src="~/app/dist/plugins/select2/fa.js"></script>
+    <script src="~/app/dist/plugins/kama/kamadatepicker.min.js"></script>
+
+    <style>
+        #quit-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Tahoma;
+        }
+
+            #quit-container button {
+                color: #2e6da4;
+                background-color: #fff;
+                border-color: #2e6da4;
+                display: inline-block;
+                margin-bottom: 0;
+                font-weight: 400;
+                text-align: center;
+                white-space: nowrap;
+                vertical-align: middle;
+                -ms-touch-action: manipulation;
+                touch-action: manipulation;
+                cursor: pointer;
+                background-image: none;
+                border: 1px solid;
+                padding: 6px 12px;
+                font-size: 14px;
+                line-height: 1.42857143;
+                border-radius: 4px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+    </style>
+</head>
+<body ng-cloak>
+    <style>
+        #loading {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            display: none;
+        }
+
+            #loading svg {
+                width: 100px;
+                height: 100px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+    </style>
+    <div id="loading">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 0 0" xml:space="preserve">
+        <circle fill="#000" stroke="none" cx="6" cy="50" r="6">
+        <animate attributeName="opacity"
+                 dur="1s"
+                 values="0;1;0"
+                 repeatCount="indefinite"
+                 begin="0.1" />
+            </circle>
+        <circle fill="#000" stroke="none" cx="26" cy="50" r="6">
+        <animate attributeName="opacity"
+                 dur="1s"
+                 values="0;1;0"
+                 repeatCount="indefinite"
+                 begin="0.2" />
+            </circle>
+        <circle fill="#000" stroke="none" cx="46" cy="50" r="6">
+        <animate attributeName="opacity"
+                 dur="1s"
+                 values="0;1;0"
+                 repeatCount="indefinite"
+                 begin="0.3" />
+            </circle>
+        <circle fill="#000" stroke="none" cx="66" cy="50" r="6">
+        <animate attributeName="opacity"
+                 dur="1s"
+                 values="0;1;0"
+                 repeatCount="indefinite"
+                 begin="0.4" />
+            </circle>
+        <circle fill="#000" stroke="none" cx="86" cy="50" r="6">
+        <animate attributeName="opacity"
+                 dur="1s"
+                 values="0;1;0"
+                 repeatCount="indefinite"
+                 begin="0.5" />
+            </circle>
+        </svg>
+    </div>
+
+    <script>
+        if (localStorage.getItem('mfaNightMode') === 'True')
+            $('body').addClass('mfaNightMode');
+
+        var showLoading = setTimeout(function () {
+            if (document.getElementById('loading'))
+                document.getElementById('loading').style.display = 'block';
+        }, 3000);
+        
+        if (localStorage.authorizationData) {
+            $.ajax({
+                url: 'User/GetRefreshToken'
+                , type: 'POST'
+                , dataType: 'json'
+                , async: true
+                , data: { RefreshToken: JSON.parse(localStorage.authorizationData).refresh_token }
+                , complete: function (xhr, textStatus) {
+                    if (xhr.responseJSON.Success) {
+                        localStorage.setItem('authorizationData', xhr.responseJSON.Data);
+                        getHTML();
+                    }
+                    else {
+                        $("body").html('<div id="quit-container"><p>' + xhr.responseJSON.Description + '</p><button type="button" onclick="exit()">خروج</button></div>');
+                    }
+                }
+            });
+        }
+        else {
+            getHTML();
+        }
+
+        function getHTML() {
+            var headers = {};
+            if (localStorage.authorizationData)
+                headers.Authorization = 'Bearer ' + JSON.parse(localStorage.authorizationData).access_token;
+
+            $.ajax({
+                url: 'Home/Init'
+                , type: 'POST'
+                , dataType: 'html'
+                , async: true
+                , headers: headers
+                , complete: function (xhr, textStatus) {
+                    clearTimeout(showLoading);
+                    $("body").html(xhr.responseText);
+                }
+            });
+        }
+        function exit() {
+            localStorage.clear();
+            setTimeout(function () { getHTML(); }, 0);
+        }
+    </script>
+</body>
+</html>

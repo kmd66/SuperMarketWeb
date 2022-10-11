@@ -1,0 +1,155 @@
+﻿@import 'variables';
+
+.form-control {
+    height: 28px;
+    padding: 0px 12px;
+}
+
+span.form-control {
+    padding-top: 4px;
+}
+
+textarea.form-control {
+    padding: 5px 12px;
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+.form-group + .col {
+    margin-top: 10px;
+}
+
+label {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+.input-group-btn button {
+    height: 28px;
+    line-height: 1;
+    margin-left: 0px;
+    margin-right: -2px;
+}
+
+.panel-heading {
+    overflow: auto;
+}
+
+// custom panel-kama
+.panel-kama {
+    border-color: $sidebarBackgroundColor;
+}
+
+.panel-kama > .panel-heading {
+    color: #fff;
+    background-color: $sidebarBackgroundColor;
+    border-color: $sidebarBackgroundColor;
+}
+
+.panel-kama > .panel-heading + .panel-collapse > .panel-body {
+    border-top-color: $sidebarBackgroundColor;
+}
+
+.panel-kama > .panel-heading .badge {
+    color: $sidebarBackgroundColor;
+    background-color: #fff;
+}
+
+.panel-kama > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: $sidebarBackgroundColor;
+}
+
+.select2-selection {
+    height: 28px !important;
+    padding: 0px 12px !important;
+    line-height: 2 !important;
+}
+
+.select2-selection__clear {
+    float: right !important;
+    margin-left: 10px !important;
+    margin-right: 0 !important;
+}
+
+// helper classes
+.m-0 {
+    margin: 0 !important;
+}
+
+.mt-0 {
+    margin-top: 0 !important;
+}
+
+.mr-0 {
+    margin-right: 0 !important;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.ml-0 {
+    margin-left: 0 !important;
+}
+
+.m-5 {
+    margin: 5px !important;
+}
+
+.mt-5 {
+    margin-top: 5px !important;
+}
+
+.mr-5 {
+    margin-right: 5px !important;
+}
+
+.mb-5 {
+    margin-bottom: 5px !important;
+}
+
+.ml-5 {
+    margin-left: 5px !important;
+}
+
+.m-10 {
+    margin: 10px !important;
+}
+
+.mt-10 {
+    margin-top: 10px !important;
+}
+
+.mr-10 {
+    margin-right: 10px !important;
+}
+
+.mb-10 {
+    margin-bottom: 10px !important;
+}
+
+.ml-10 {
+    margin-left: 10px !important;
+}
+
+.m-15 {
+    margin: 15px !important;
+}
+
+.mt-15 {
+    margin-top: 15px !important;
+}
+
+.mr-15 {
+    margin-right: 15px !important;
+}
+
+.mb-15 {
+    margin-bottom: 15px !important;
+}
+
+.ml-15 {
+    margin-left: 15px !important;
+}

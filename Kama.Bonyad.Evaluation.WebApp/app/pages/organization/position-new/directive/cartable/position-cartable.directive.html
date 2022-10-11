@@ -1,0 +1,164 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <!--error-->
+        <div class="row">
+            <div class="col-xs-12" id="request-errors">
+                <kama-error errors="cartable.model.errors"></kama-error>
+            </div>
+        </div>
+        <div class="well well-sm" style="padding: 9px 15px">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="cartable-action" ng-click="cartable.grid.getlist()"><span>به‌روز‌رسانی</span><i class="fa fa-refresh" aria-hidden="true"></i></div>
+                    <div class="cartable-action" ng-click="search.state = 'show'"><span>جستجو</span><i class="fa fa-search" aria-hidden="true"></i></div>
+                    <div class="cartable-action" data-toggle="modal" data-target="#sort-modal-cancellation-cartable">
+                        <span>مرتب سازی</span><i class="fa fa-sort-amount-asc" aria-hidden="true"></i>
+                    </div>
+                    <div class="cartable-action" ng-click="cartable.exportExcel()"><span>خروجی اکسل</span><i class="fa fa-file-excel-o" aria-hidden="true"></i></div>
+                    <div>
+                        <strong class="cartable-filter">نوع کاربران:</strong>
+                        <div class="cartable-filter" ng-class="{ 'cartable-filter-selected': search.model.UserType === 1 }"><a ng-click="cartable.changeTypeDropDown(1);">کاربران درون سازمانی</a></div>
+                        <div class="cartable-filter" ng-class="{ 'cartable-filter-selected': search.model.UserType === 2 }"><a ng-click="cartable.changeTypeDropDown(2);">کاربران برون سازمانی</a></div>
+                        <div class="cartable-filter" ng-class="{ 'cartable-filter-selected': !search.model.UserType }"><a ng-click="cartable.changeTypeDropDown(null);">همه کاربران</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default" ng-show="search.state === 'show'">
+            <div class="panel-heading">
+                جستجو
+                <button type="button" class="close" aria-hidden="true" ng-click="search.state = 'hide'">×</button>
+            </div>
+            <div class="panel-body">
+                <form ng-submit="cartable.grid.pageIndex = 1; cartable.grid.getlist();">
+                    <div class="row">
+                        <!--محل کار-->
+                        <div class="form-group col-xs-12">
+                            <label>محل کار</label>
+                            <kama-select obj="search.departmentDropDown"></kama-select>
+                        </div>
+                        <!--کدملی-->
+                        <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                            <label>کدملی</label>
+                            <input class="form-control" ng-model="search.model.NationalCode" maxlength="10" />
+                        </div>
+                        <!--نام-->
+                        <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                            <label>نام</label>
+                            <input class="form-control" ng-model="search.model.FirstName" />
+                        </div>
+                        <!--نام خانوادگی-->
+                        <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                            <label>نام خانوادگی</label>
+                            <input class="form-control" ng-model="search.model.LastName" />
+                        </div>
+                        <!--تلفن همراه-->
+                        <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                            <label>تلفن همراه</label>
+                            <input class="form-control" ng-model="search.model.CellPhone" maxlength="11" />
+                        </div>
+                        <!--سمت-->
+                        <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                            <label>سمت</label>
+                            <kama-select obj="search.typeDropDown"></kama-select>
+                        </div>
+                        <!--فعال/غیرفعال-->
+                        <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                            <label>فعال/غیرفعال</label>
+                            <kama-select obj="search.enableDropDown"></kama-select>
+                        </div>
+
+                        <!--button-->
+                        <div class="btn-container col-xs-12">
+                            <hr />
+                            <button type="submit" class="btn btn-cancel">جستجو</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!--grid-->
+        <kama-grid obj="cartable.grid"></kama-grid>
+    </div>
+</div>
+
+<!--confirm remove position modal-->
+<div class="modal fade" id="confirm-remove-position-modal" role="dialog" aria-labelledby="confirmRemovePositionLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="confirmRemovePositionLabel">حذف جایگاه</h4>
+            </div>
+            <div class="modal-body">
+                <p>از حذف جایگاه <strong><kama-display-enum model="cartable.removePositionObject.Type" enum="EvaluationPositionType"></kama-display-enum></strong> اطمینان دارید؟</p>
+            </div>
+            <div class="modal-footer btn-container">
+                <button type="button" class="btn btn-danger btn-min-width" ng-click="cartable.removePosition()">تایید</button>
+                <button type="button" class="btn btn-default btn-min-width" data-dismiss="modal">انصراف</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--confirm remove user modal-->
+<div class="modal fade" id="confirm-remove-user-modal" role="dialog" aria-labelledby="confirmRemoveUserLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="confirmRemoveUserLabel">حذف شخص از جایگاه</h4>
+            </div>
+            <div class="modal-body">
+                <p>از حذف <strong>{{cartable.removePersoneObject.FirstName}} {{cartable.removePersoneObject.LastName}}</strong> از جایگاه <strong><kama-display-enum model="cartable.rowRemovePersone.Type" enum="EvaluationPositionType"></kama-display-enum></strong> اطمینان دارید؟</p>
+            </div>
+            <div class="modal-footer btn-container">
+                <button type="button" class="btn btn-danger btn-min-width" ng-click="cartable.removePersone()">تایید</button>
+                <button type="button" class="btn btn-default btn-min-width" data-dismiss="modal">انصراف</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- reset password modal -->
+<div class="modal fade" id="confirm-reset-password-modal" role="dialog" aria-labelledby="deleteConfirmationLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">بازنشانی رمز عبور</h4>
+            </div>
+            <div class="modal-body">
+                <p>از بازنشانی رمز عبور <strong>{{cartable.resetPasswordObject.FirstName + ' ' + cartable.resetPasswordObject.LastName}}</strong> اطمینان دارید؟</p>
+            </div>
+            <div class="modal-footer btn-container">
+                <button type="button" class="btn btn-danger btn-min-width" ng-click="cartable.confirmResetPassword()">تایید</button>
+                <button type="button" class="btn btn-default btn-min-width" data-dismiss="modal">انصراف</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--sort modal-->
+<div class="modal fade" id="sort-modal-cancellation-cartable" role="dialog" aria-labelledby="sortModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="sortModalLabel">مرتب سازی</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <kama-grid-sort obj="search"
+                                        columns="cartable.grid.columns">
+                        </kama-grid-sort>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer btn-container">
+                <button type="button" class="btn btn-success btn-min-width" data-dismiss="modal" ng-click="cartable.grid.getlist()">تایید</button>
+                <button type="button" class="btn btn-cancel btn-min-width" data-dismiss="modal">انصراف</button>
+            </div>
+        </div>
+    </div>
+</div>

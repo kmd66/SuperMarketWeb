@@ -1,0 +1,61 @@
+﻿/* remove tree-grid animations */
+.tree-grid-animate-enter,
+.tree-grid-row.ng-enter,
+.tree-grid-animate-leave,
+.tree-grid-row.ng-leave {
+    -moz-transition: none;
+    -o-transition: none;
+    -webkit-transition: none;
+    transition: none;
+}
+
+/* rtl tree-grid */
+.tree-grid {
+    margin-bottom: 0;
+
+    .level-2 .indented {
+        left: auto;
+        right: 20px;
+    }
+
+    .level-3 .indented {
+        left: auto;
+        right: 40px;
+    }
+
+    .level-4 .indented {
+        left: auto;
+        right: 60px;
+    }
+
+    .level-5 .indented {
+        left: auto;
+        right: 80px;
+    }
+
+    .level-6 .indented {
+        left: auto;
+        right: 100px;
+    }
+
+    .level-7 .indented {
+        left: auto;
+        right: 120px;
+    }
+
+    .level-8 .indented {
+        left: auto;
+        right: 140px;
+    }
+
+    .level-9 .indented {
+        left: auto;
+        right: 160px;
+    }
+}
+
+/* custom tree grid actions */
+.tgrid-action {
+    cursor: pointer;
+    margin-left: 10px;
+}

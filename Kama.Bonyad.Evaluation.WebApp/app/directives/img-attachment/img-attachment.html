@@ -1,0 +1,58 @@
+﻿<style>
+    .bindingObjectText {
+        padding: 0px 5px;
+        cursor: pointer;
+        color: green;
+    }
+</style>
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading" ng-show="!obj.hideHead">{{obj.title}}</div>
+            <div class="panel-body">
+                <div ng-show="!obj.bindingObject">
+                    <input id="file{{obj.id}}" type="file" onchange="angular.element(this).scope().obj.changeSelect()" style="display:none">
+                    <button type="button" ng-show="!obj.selected" class="btn btn-info btn-min-width" ng-click="obj.select()">انتخاب</button>
+                    <button type="button" ng-show="obj.selected" class="btn btn-success btn-min-width" ng-click="obj.upload()">بارگزاری</button>
+                    <button type="button" ng-show="obj.selected" class="btn btn-danger btn-min-width" ng-click="obj.reset()">حذف</button>
+                </div>
+
+                <div ng-show="obj.bindingObject">
+                    <div><img src="{{obj.bindingObject.Url}}" height="70px" width="70px" /></div>
+                    <div style="margin-top: 5px">
+                        <span class="bindingObjectText" ng-click="obj.show()"> [دانلود] </span>
+                        <span class="bindingObjectText" ng-click="obj.remove()" style="color:red"> [حذف] </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<button type="button" class="btn btn-success btn-min-width" data-toggle="modal" data-target="#remove-modal{{obj.id}}">
+    Open Modal
+</button>-->
+
+<div class="modal fade" id="remove-modal{{obj.id}}" role="dialog" aria-labelledby="removeLabel{{obj.id}}" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="removeLabel{{obj.id}}">حذف فایل</h4>
+            </div>
+            <div class="modal-body">
+                آیا از حذف فایل اطمینان دارید ؟
+            </div>
+
+            <div class="modal-footer btn-container">
+                <button ng-click="obj.remove(true)" class="btn btn-danger btn-min-width">
+                    تایید
+                </button>
+                <button type="button" class="btn btn-cancel btn-min-width" data-dismiss="modal">
+                    انصراف
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

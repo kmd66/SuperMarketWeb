@@ -1,0 +1,802 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F4383CF3-25C8-458A-94A8-DAD344333F70}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Kama.Bonyad.Evaluation.WebApp</RootNamespace>
+    <AssemblyName>Kama.Bonyad.Evaluation.WebApp</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.4</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Kama.AppCore, Version=1.1.0.20383, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Kama.AppCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Kama.Bonyad.Evaluation.ApiClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Kama.Bonyad.Evaluation.ApiClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Kama.Bonyad.Evaluation.Core.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Kama.Bonyad.Evaluation.Core.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Kama.Library.ApiClient, Version=1.1.0.32373, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Kama.Library.ApiClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Kama.Organization.ApiClient, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Kama.Organization.ApiClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Kama.Organization.Core.Model, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Kama.Organization.Core.Model.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.5.2.2\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.2.2\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.4.0.0\lib\net451\Microsoft.Owin.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.2.2\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Cors, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.6\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.6\lib\net45\System.Web.Http.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.4\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ApplicationSurveyAnswerController.cs" />
+    <Compile Include="Controllers\ApplicationSurveyParticipantController.cs" />
+    <Compile Include="Controllers\ApplicationSurveyQuestionChoiceController.cs" />
+    <Compile Include="Controllers\ApplicationSurveyQuestionController.cs" />
+    <Compile Include="Controllers\ApplicationSurveyGroupController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\Organization\PlaceController.cs" />
+    <Compile Include="Controllers\Organization\PositionController.cs" />
+    <Compile Include="Controllers\Organization\PositionHistoryController.cs" />
+    <Compile Include="Controllers\Organization\RoleController.cs" />
+    <Compile Include="Controllers\ApplicationController.cs" />
+    <Compile Include="Controllers\prd\TagController.cs" />
+    <Compile Include="Controllers\prd\ProductController.cs" />
+    <Compile Include="Controllers\prd\ProductClassificationController.cs" />
+    <Compile Include="Controllers\Public\AttachmentController.cs" />
+    <Compile Include="Controllers\SmsSecurityStampController.cs" />
+    <Compile Include="Controllers\Organization\DepartmentController.cs" />
+    <Compile Include="Controllers\Organization\CommandController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NotAuthorisedController.cs" />
+    <Compile Include="Controllers\NotFoundController.cs" />
+    <Compile Include="Controllers\ApplicationSurveyController.cs" />
+    <Compile Include="Controllers\OrganizationAttachmentController.cs" />
+    <Compile Include="Controllers\Organization\UserController.cs" />
+    <Compile Include="DryIoc\AsyncExecutionFlowScopeContext.cs" />
+    <Compile Include="DryIoc\Container.cs" />
+    <Compile Include="DryIoc\FastExpressionCompiler.cs" />
+    <Compile Include="DryIoc\ImTools.cs" />
+    <Compile Include="DryIoc\Mvc\DryIocMvc.cs" />
+    <Compile Include="DryIoc\Web\DryIocWeb.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="IOC\Activator.cs" />
+    <Compile Include="IOC\Container.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceHost\OrganizationHost.cs" />
+    <Compile Include="ServiceHost\AgreementHost.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Tools\Captcha.cs" />
+    <Compile Include="Tools\CustomAntiforgery.cs" />
+    <Compile Include="Tools\CustomJsonFilter.cs" />
+    <Compile Include="Tools\Extensions.cs" />
+    <Compile Include="Tools\FileConverter.cs" />
+    <Compile Include="Tools\ModuleGenerator.cs" />
+    <Compile Include="Tools\Logger.cs" />
+    <Compile Include="Tools\ObjectSerializer.cs" />
+    <Compile Include="Tools\Validate.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\app.config.js" />
+    <Content Include="app\app.module.js" />
+    <Content Include="app\app.run.js" />
+    <Content Include="app\assets\images\captcha.jpg" />
+    <Content Include="app\assets\images\app-logo.png" />
+    <Content Include="app\assets\images\help\1-1.png" />
+    <Content Include="app\assets\images\help\1-2.png" />
+    <Content Include="app\assets\images\help\2-1.png" />
+    <Content Include="app\assets\images\help\2-2.png" />
+    <Content Include="app\assets\images\help\complaint\complaint-1.png" />
+    <Content Include="app\assets\images\help\complaint\complaint-2.png" />
+    <Content Include="app\assets\images\help\complaint\complaint-3.png" />
+    <Content Include="app\assets\images\help\complaint\complaint-4.png" />
+    <Content Include="app\assets\images\help\signup\signup-1.png" />
+    <Content Include="app\assets\images\help\signup\signup-2.png" />
+    <Content Include="app\assets\images\help\tax-slip-map.jpg" />
+    <Content Include="app\assets\images\help\tax-slip-sample.jpg" />
+    <Content Include="app\assets\images\ministry-logo.png" />
+    <Content Include="app\assets\images\ministry-logo-white.png" />
+    <Content Include="app\assets\images\pattern.png" />
+    <Content Include="app\assets\images\profile_picture.jpg" />
+    <Content Include="app\assets\images\app-logo-white.png" />
+    <Content Include="app\assets\images\ramzi-signature.png" />
+    <Content Include="app\css\help.css" />
+    <Content Include="app\directives\auto-save\auto-save.directive.js" />
+    <Content Include="app\directives\auto-save\auto-save.html" />
+    <Content Include="app\directives\document-stats\document-stats.directive.html" />
+    <Content Include="app\directives\document-stats\document-stats.directive.js" />
+    <Content Include="app\directives\img-attachment\img-attachment.directive.js" />
+    <Content Include="app\directives\img-attachment\img-attachment.html" />
+    <Content Include="app\directives\outside-menu\outside-menu.directive.js" />
+    <Content Include="app\directives\outside-menu\outside-menu.html" />
+    <Content Include="app\directives\outside-template\outside-template.directive.js" />
+    <Content Include="app\directives\outside-template\outside-template.html" />
+    <Content Include="app\dist\app.bundle.js" />
+    <Content Include="app\dist\plugins\angular\angular-animate.min.js" />
+    <Content Include="app\dist\plugins\angular\angular-route.min.js" />
+    <Content Include="app\dist\plugins\angular\angular-sanitize.min.js" />
+    <Content Include="app\dist\plugins\angular\angular.min.js" />
+    <Content Include="app\dist\plugins\angular\ngStorage.min.js" />
+    <Content Include="app\dist\plugins\angular\smart-table.min.js" />
+    <Content Include="app\dist\plugins\angular\tree-grid-directive.js" />
+    <Content Include="app\dist\plugins\angular\treeGrid.css" />
+    <Content Include="app\dist\plugins\bootstrap\css\bootstrap.min.css" />
+    <Content Include="app\dist\plugins\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="app\dist\plugins\bootstrap\js\bootstrap.min.js" />
+    <Content Include="app\dist\plugins\ckeditor\build-config.js" />
+    <Content Include="app\dist\plugins\ckeditor\ckeditor.js" />
+    <Content Include="app\dist\plugins\ckeditor\config.js" />
+    <Content Include="app\dist\plugins\ckeditor\contents.css" />
+    <Content Include="app\dist\plugins\ckeditor\lang\en.js" />
+    <Content Include="app\dist\plugins\ckeditor\lang\fa.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\icons.png" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\icons_hidpi.png" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\image\images\noimage.png" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\link\images\anchor.png" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\link\images\hidpi\anchor.png" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\magicline\images\hidpi\icon-rtl.png" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\magicline\images\hidpi\icon.png" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\magicline\images\icon-rtl.png" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\magicline\images\icon.png" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\preview\preview.html" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\af.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\ar.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\az.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\bg.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\ca.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\cs.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\cy.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\da.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\de-ch.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\de.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\el.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\en-au.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\en-ca.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\en-gb.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\en.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\eo.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\es-mx.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\es.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\et.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\eu.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\fa.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\fi.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\fr-ca.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\fr.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\gl.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\he.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\hr.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\hu.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\id.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\it.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\ja.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\km.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\ko.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\ku.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\lt.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\lv.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\nb.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\nl.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\no.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\oc.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\pl.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\pt-br.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\pt.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\ru.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\si.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\sk.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\sl.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\sq.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\sv.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\th.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\tr.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\tt.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\ug.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\uk.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\vi.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\zh-cn.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\zh.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\lang\_translationstatus.txt" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\tableselection\styles\tableselection.css" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="app\dist\plugins\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="app\dist\plugins\ckeditor\skins\office2013\dialog.css" />
+    <Content Include="app\dist\plugins\ckeditor\skins\office2013\editor.css" />
+    <Content Include="app\dist\plugins\ckeditor\skins\office2013\icons.png" />
+    <Content Include="app\dist\plugins\ckeditor\skins\office2013\icons_hidpi.png" />
+    <Content Include="app\dist\plugins\ckeditor\skins\office2013\images\arrow.png" />
+    <Content Include="app\dist\plugins\ckeditor\skins\office2013\images\close.png" />
+    <Content Include="app\dist\plugins\ckeditor\skins\office2013\images\hidpi\close.png" />
+    <Content Include="app\dist\plugins\ckeditor\skins\office2013\images\hidpi\lock-open.png" />
+    <Content Include="app\dist\plugins\ckeditor\skins\office2013\images\hidpi\lock.png" />
+    <Content Include="app\dist\plugins\ckeditor\skins\office2013\images\hidpi\refresh.png" />
+    <Content Include="app\dist\plugins\ckeditor\skins\office2013\images\lock-open.png" />
+    <Content Include="app\dist\plugins\ckeditor\skins\office2013\images\lock.png" />
+    <Content Include="app\dist\plugins\ckeditor\skins\office2013\images\refresh.png" />
+    <Content Include="app\dist\plugins\ckeditor\styles.js" />
+    <Content Include="app\dist\plugins\font-awesome\css\font-awesome.min.css" />
+    <Content Include="app\dist\plugins\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="app\dist\plugins\jquery\jquery.min.js" />
+    <Content Include="app\dist\plugins\kama\kama-angularjs.min.css" />
+    <Content Include="app\dist\plugins\kama\kama-angularjs.min.js" />
+    <Content Include="app\dist\plugins\kama\kamadatepicker.min.css" />
+    <Content Include="app\dist\plugins\kama\kamadatepicker.min.js" />
+    <Content Include="app\dist\plugins\select2\fa.js" />
+    <Content Include="app\dist\plugins\select2\select2-bootstrap.min.css" />
+    <Content Include="app\dist\plugins\select2\select2.min.css" />
+    <Content Include="app\dist\plugins\select2\select2.min.js" />
+    <Content Include="app\dist\styles.css" />
+    <Content Include="app\pages\prd\product\directive\information\product-information.directive.html" />
+    <Content Include="app\pages\prd\product\directive\information\product-information.directive.js" />
+    <Content Include="app\pages\prd\product\directive\Tag\product-tag.directive.html" />
+    <Content Include="app\pages\prd\product\directive\Tag\product-tag.directive.js" />
+    <Content Include="app\pages\prd\product\directive\cartable\product-cartable.directive.html" />
+    <Content Include="app\pages\prd\product\directive\cartable\product-cartable.directive.js" />
+    <Content Include="app\pages\prd\product\directive\modify\product-modify.directive.html" />
+    <Content Include="app\pages\prd\product\directive\modify\product-modify.directive.js" />
+    <Content Include="app\pages\prd\product\product.controller.js" />
+    <Content Include="app\pages\prd\product\product.html" />
+    <Content Include="app\pages\prd\product\product.service.js" />
+    <Content Include="app\pages\prd\product-classification\directive\cartable\product-classification-cartable.directive.html" />
+    <Content Include="app\pages\prd\product-classification\directive\cartable\product-classification.directive.js" />
+    <Content Include="app\pages\prd\product-classification\directive\modify\product-classification-modify.directive.html" />
+    <Content Include="app\pages\prd\product-classification\directive\modify\product-classification-modify.directive.js" />
+    <Content Include="app\pages\prd\product-classification\product-classification.controller.js" />
+    <Content Include="app\pages\prd\product-classification\product-classification.html" />
+    <Content Include="app\pages\prd\product-classification\product-classification.service.js" />
+    <Content Include="app\pages\organization\application\application.html" />
+    <Content Include="app\pages\organization\application\cartable\application-cartable.directive.html" />
+    <Content Include="app\pages\organization\application\cartable\application-cartable.directive.js" />
+    <Content Include="app\pages\organization\application\modify\application-modify.directive.html" />
+    <Content Include="app\pages\organization\application\modify\application-modify.directive.js" />
+    <Content Include="app\pages\organization\position-new\directive\history\position-history.directive.html" />
+    <Content Include="app\pages\organization\position-new\directive\history\position-history.directive.js" />
+    <Content Include="app\pages\change-password\change-password.controller.js" />
+    <Content Include="app\pages\change-password\change-password.html" />
+    <Content Include="app\pages\organization\command\command.controller.js" />
+    <Content Include="app\pages\organization\command\command.html" />
+    <Content Include="app\pages\organization\command\command.service.js" />
+    <Content Include="app\pages\organization\reset-password\signup\signup.controller.js" />
+    <Content Include="app\pages\organization\reset-password\signup\signup.html" />
+    <Content Include="app\pages\organization\reset-password\signup\signup.service.js" />
+    <Content Include="app\pages\organization\reset-password\user-settings\user-settings.controller.js" />
+    <Content Include="app\pages\organization\reset-password\user-settings\user-settings.html" />
+    <Content Include="app\pages\organization\reset-password\user\directive\user.directive.html" />
+    <Content Include="app\pages\organization\reset-password\user\directive\user.directive.js" />
+    <Content Include="app\pages\organization\reset-password\verify-cellphone\verify-cellphone.controller.js" />
+    <Content Include="app\pages\organization\reset-password\verify-cellphone\verify-cellphone.html" />
+    <Content Include="app\services\tag.service.js" />
+    <Content Include="app\services\document.service.js" />
+    <Content Include="app\pages\organization\position-new\directive\cartable\position-cartable.directive.html" />
+    <Content Include="app\pages\organization\position-new\directive\cartable\position-cartable.directive.js" />
+    <Content Include="app\pages\organization\position-new\directive\modify\position-modify.directive.html" />
+    <Content Include="app\pages\organization\position-new\directive\modify\position-modify.directive.js" />
+    <Content Include="app\pages\organization\position-new\position-new.controller.js" />
+    <Content Include="app\pages\organization\position-new\position-new.html" />
+    <Content Include="app\services\org\position-history.service.js" />
+    <Content Include="app\services\org\position.service.js" />
+    <Content Include="app\pages\organization\reset-password\reset-password.html" />
+    <Content Include="app\pages\organization\reset-password\reset-password.controller.js" />
+    <Content Include="app\pages\contact\directive\contact.directive.js" />
+    <Content Include="app\pages\contact\directive\contact.html" />
+    <Content Include="app\pages\contact\contact-inside.html" />
+    <Content Include="app\pages\contact\contact-outside.html" />
+    <Content Include="app\pages\contact\contact.service.js" />
+    <Content Include="app\pages\faq\component\faq.component.js" />
+    <Content Include="app\pages\faq\faq-inside.html" />
+    <Content Include="app\pages\faq\faq-outside.html" />
+    <Content Include="app\pages\faq\component\faq.html" />
+    <Content Include="app\pages\organization\role\cartable\role-cartable.directive.html" />
+    <Content Include="app\pages\organization\role\cartable\role-cartable.directive.js" />
+    <Content Include="app\pages\organization\role\modify\role-modify.directive.html" />
+    <Content Include="app\pages\organization\role\modify\role-modify.directive.js" />
+    <Content Include="app\pages\organization\role\role.controller.js" />
+    <Content Include="app\pages\organization\role\role.html" />
+    <Content Include="app\pages\organization\role\role.service.js" />
+    <Content Include="app\pages\organization\user-settings\user-settings.controller.js" />
+    <Content Include="app\pages\organization\user-settings\user-settings.html" />
+    <Content Include="app\pages\organization\user\directive\user.directive.html" />
+    <Content Include="app\pages\organization\user\directive\user.directive.js" />
+    <Content Include="app\services\org\application.service.js" />
+    <Content Include="app\services\pbl\attachment.service.js" />
+    <Content Include="app\services\sms-security-stamp.service.js" />
+    <Content Include="app\pages\not-found\not-found.controller.js" />
+    <Content Include="app\pages\not-found\not-found.html" />
+    <Content Include="app\pages\init\init.controller.js" />
+    <Content Include="app\pages\init\init.html" />
+    <Content Include="app\pages\home\home.controller.js" />
+    <Content Include="app\pages\home\home.html" />
+    <Content Include="app\pages\home\home.service.js" />
+    <Content Include="app\pages\index\index.controller.js" />
+    <Content Include="app\pages\index\index.html" />
+    <Content Include="app\pages\organization\login\login.controller.js" />
+    <Content Include="app\pages\organization\login\login.html" />
+    <Content Include="app\pages\organization\profile\profile.controller.js" />
+    <Content Include="app\pages\organization\profile\profile.html" />
+    <Content Include="app\pages\signup\signup.service.js" />
+    <Content Include="app\pages\signup\signup.html" />
+    <Content Include="app\services\org\department.service.js" />
+    <Content Include="app\pages\organization\verify-cellphone\verify-cellphone.controller.js" />
+    <Content Include="app\pages\organization\verify-cellphone\verify-cellphone.html" />
+    <Content Include="app\services\custom-enum.service.js">
+      <DependentUpon>custom-enum.service.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Content>
+    <Content Include="app\services\custom-enum.service.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>custom-enum.service.js</LastGenOutput>
+    </Content>
+    <Content Include="app\services\custom-http.service.js">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>custom-http.service.tt</DependentUpon>
+    </Content>
+    <Content Include="app\services\custom-http.service.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>custom-http.service.js</LastGenOutput>
+    </Content>
+    <Content Include="app\services\org\place.service.js" />
+    <Content Include="app\services\org\organization-attachment.service.js" />
+    <Content Include="app\services\org\user.service.js" />
+    <Content Include="app\services\text-template.service.js" />
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Antlr3.Runtime.pdb" />
+    <Content Include="bin\Kama.AppCore.dll" />
+    <Content Include="bin\Kama.Library.ApiClient.dll" />
+    <Content Include="bin\Kama.Library.Helper.dll" />
+    <Content Include="bin\Kama.Organization.ApiClient.dll" />
+    <Content Include="bin\Kama.Organization.ApiClient.pdb" />
+    <Content Include="bin\Kama.Organization.Core.Model.dll" />
+    <Content Include="bin\Kama.Organization.Core.Model.pdb" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.xml" />
+    <Content Include="bin\Microsoft.AspNet.TelemetryCorrelation.dll" />
+    <Content Include="bin\Microsoft.AspNet.TelemetryCorrelation.xml" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.IdentityModel.Logging.dll" />
+    <Content Include="bin\Microsoft.IdentityModel.Logging.pdb" />
+    <Content Include="bin\Microsoft.IdentityModel.Logging.xml" />
+    <Content Include="bin\Microsoft.IdentityModel.Tokens.dll" />
+    <Content Include="bin\Microsoft.IdentityModel.Tokens.pdb" />
+    <Content Include="bin\Microsoft.IdentityModel.Tokens.xml" />
+    <Content Include="bin\Microsoft.Owin.Cors.dll" />
+    <Content Include="bin\Microsoft.Owin.Cors.xml" />
+    <Content Include="bin\Microsoft.Owin.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.xml" />
+    <Content Include="bin\Microsoft.Owin.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\Owin.dll" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\csi.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="bin\roslyn\Microsoft.Win32.Primitives.dll" />
+    <Content Include="bin\roslyn\System.AppContext.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Console.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.FileVersionInfo.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.Process.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
+    <Content Include="bin\roslyn\System.IO.Compression.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.DriveInfo.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="bin\roslyn\System.IO.Pipes.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\System.Security.AccessControl.dll" />
+    <Content Include="bin\roslyn\System.Security.Claims.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Algorithms.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Encoding.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Primitives.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.X509Certificates.dll" />
+    <Content Include="bin\roslyn\System.Security.Principal.Windows.dll" />
+    <Content Include="bin\roslyn\System.Text.Encoding.CodePages.dll" />
+    <Content Include="bin\roslyn\System.Threading.Thread.dll" />
+    <Content Include="bin\roslyn\System.ValueTuple.dll" />
+    <Content Include="bin\roslyn\System.Xml.ReaderWriter.dll" />
+    <Content Include="bin\roslyn\System.Xml.XmlDocument.dll" />
+    <Content Include="bin\roslyn\System.Xml.XPath.dll" />
+    <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Diagnostics.DiagnosticSource.dll" />
+    <Content Include="bin\System.Diagnostics.DiagnosticSource.xml" />
+    <Content Include="bin\System.IdentityModel.Tokens.Jwt.dll" />
+    <Content Include="bin\System.IdentityModel.Tokens.Jwt.pdb" />
+    <Content Include="bin\System.IdentityModel.Tokens.Jwt.xml" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.xml" />
+    <Content Include="bin\System.Web.Cors.dll" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.Owin.dll" />
+    <Content Include="bin\System.Web.Http.Owin.xml" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.xml" />
+    <Content Include="bin\System.Web.Http.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Optimization.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="bin\WebActivatorEx.dll" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sitemap.xml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\assets\videos\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Files\" />
+    <Folder Include="obj\Debug\" />
+    <Folder Include="TemporaryFiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\package.json" />
+    <Content Include="app\webpack.config.js" />
+    <Content Include="app\css\animation.scss" />
+    <Content Include="app\css\font-vazir.scss" />
+    <Content Include="app\css\kama-bootstrap-rtl.scss" />
+    <Content Include="app\css\loader.scss" />
+    <Content Include="app\css\pages.scss" />
+    <Content Include="app\css\template.scss" />
+    <Content Include="app\css\thin-bootstrap.scss" />
+    <Content Include="app\css\variables.scss" />
+    <Content Include="app\assets\fonts\Vazir-Bold-FD.eot" />
+    <Content Include="app\assets\fonts\Vazir-Bold-FD.ttf" />
+    <Content Include="app\assets\fonts\Vazir-Bold-FD.woff" />
+    <Content Include="app\assets\fonts\Vazir-FD.eot" />
+    <Content Include="app\assets\fonts\Vazir-FD.ttf" />
+    <Content Include="app\assets\fonts\Vazir-FD.woff" />
+    <Content Include="app\assets\fonts\Vazir-Light-FD.eot" />
+    <Content Include="app\assets\fonts\Vazir-Light-FD.ttf" />
+    <Content Include="app\assets\fonts\Vazir-Light-FD.woff" />
+    <Content Include="app\css\pages\index.scss" />
+    <Content Include="app\css\style.scss" />
+    <Content Include="app\css\pages\login.scss" />
+    <Content Include="app\css\directives\announcement.scss" />
+    <Content Include="app\css\directives.scss" />
+    <Content Include="app\css\pages\init.scss" />
+    <Content Include="app\css\directives\tree-grid.scss" />
+    <Content Include="app\pages\signup\signup.controller.js" />
+    <Content Include="app\css\pages\signup.scss" />
+    <Content Include="app\css\pages\complaint-cartable.scss" />
+    <Content Include="app\assets\fonts\bnazanin.ttf" />
+    <Content Include="app\css\pages\minister-list.scss" />
+    <Content Include="app\css\pages\message.scss" />
+    <Content Include="bin\ApplicationInsights.config" />
+    <Content Include="bin\roslyn\csc.exe.config" />
+    <Content Include="bin\roslyn\csc.rsp" />
+    <Content Include="bin\roslyn\csi.exe.config" />
+    <Content Include="bin\roslyn\csi.rsp" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\vbc.exe.config" />
+    <Content Include="bin\roslyn\vbc.rsp" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="app\pages\organization\application\application.controller.js" />
+    <Content Include="app\dist\1cf307f8c0201899d0c1c74f623a7567.eot" />
+    <Content Include="app\dist\23bf1d3683a1e4517e8bf4fdde91d70e.ttf" />
+    <Content Include="app\dist\6e153645a2a8e331282d419262c86820.ttf" />
+    <Content Include="app\dist\8be0289c5a1b920cbfca1a55a5cbb1fd.eot" />
+    <Content Include="app\dist\b9d24d7c850364b0192da83fe62529e8.ttf" />
+    <Content Include="app\dist\c346c34c29b03dfbbfbd2b4cd25b3b72.woff" />
+    <Content Include="app\dist\ca7f1db8f49a1552d69520fbc27e8157.eot" />
+    <Content Include="app\dist\d614680e35614320c13c2822972469aa.woff" />
+    <Content Include="app\dist\de1486d3acdc6a75b0ed9f4860025873.woff" />
+    <Content Include="app\dist\plugins\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="app\dist\plugins\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="app\dist\plugins\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="app\dist\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="app\dist\plugins\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="app\dist\plugins\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="app\dist\plugins\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="app\dist\plugins\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="app\dist\plugins\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="app\dist\plugins\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="app\dist\plugins\jquery\jquery.min.map" />
+    <Content Include="app\package-lock.json" />
+    <Content Include="app\version.json" />
+    <Content Include="app\css\nightmode.scss" />
+    <Content Include="app\css\pages\dynamic-report.scss" />
+    <None Include="packages.config" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Inside\IndexTemplate.cshtml" />
+    <Content Include="Views\NotAuthorised\Index.cshtml" />
+    <Content Include="Views\NotFound\Index.cshtml" />
+    <Content Include="Views\Outside\IndexTemplate.cshtml" />
+    <Content Include="Views\Help\Index.cshtml" />
+    <Content Include="Views\Help\sections\_login.cshtml" />
+    <Content Include="Views\Help\sections\_new-complaint.cshtml" />
+    <Content Include="Views\Help\sections\_signup.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>29099</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5271/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

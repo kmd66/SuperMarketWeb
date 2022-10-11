@@ -1,0 +1,91 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">دسترسی‌ها</div>
+            <div class="panel-body">
+                <button type="button"
+                        class="btn btn-sm btn-primary"
+                        ng-click="command.main.add()">
+                    ایجاد دسترسی جدید
+                </button>
+
+                <tree-grid tree-data="command.main.tree.data"
+                           col-defs="command.main.tree.colDefs"
+                           expand-on="command.main.tree.expandingProperty"
+                           expand-to="command.main.tree.expandTo"
+                           icon-leaf="fa fa-circle-o"
+                           icon-expand="fa fa-plus"
+                           icon-collapse="fa fa-minus"></tree-grid>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--command modal-->
+<div class="modal fade" id="command-modal" role="dialog" aria-labelledby="command-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="command-modal-label">
+                    <span ng-if="command.main.state === 'add'">افزودن دسترسی جدید</span>
+                    <span ng-if="command.main.state === 'edit'">ویرایش دسترسی</span>
+                </h4>
+            </div>
+            <form ng-submit="command.main.save()">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <kama-error errors="command.main.model.errors"></kama-error>
+                        </div>
+
+                        <div class="form-group col-xs-12">
+                            <label ng-class="{'required': command.main.state === 'edit'}">دسترسی بالاتر</label>
+                            <kama-select obj="command.main.parentDropDown" ng-show="command.main.state !== 'add'"></kama-select>
+                            <span class="form-control" ng-if="command.main.state === 'add'" disabled>{{command.main.model.ParentName}}</span>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label class="required">نوع</label>
+                            <kama-select obj="command.main.typeDropDown"></kama-select>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label class="required">نام (انگلیسی)</label>
+                            <input type="text" class="form-control" ng-model="command.main.model.Name" kama-prevent="[^a-zA-Z]" />
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label class="required">عنوان</label>
+                            <input type="text" class="form-control" ng-model="command.main.model.Title" />
+                        </div>
+                        <div class="form-group col-xs-12" ng-if="command.main.state === 'edit'">
+                            <label>نام مجوز</label>
+                            <span class="form-control" readonly>{{command.main.model.PermissionName}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer btn-container">
+                    <button type="submit" class="btn btn-success btn-min-width">ثبت</button>
+                    <button type="button" class="btn btn-cancel btn-min-width" data-dismiss="modal">انصراف</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!--confirm remove modal-->
+<div class="modal fade" id="confirm-remove-modal" role="dialog" aria-labelledby="confirm-remove-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="confirm-remove-modal-label">تایید حذف</h4>
+            </div>
+            <div class="modal-body">
+                <p>از حذف <strong>{{command.main.removeObject.Title}}</strong> و تمام زیرمجموعه‌های آن اطمینان دارید؟</p>
+            </div>
+            <div class="modal-footer btn-container">
+                <button type="button" class="btn btn-danger btn-min-width" ng-click="command.main.confirmRemove()">تایید</button>
+                <button type="button" class="btn btn-default btn-min-width" data-dismiss="modal">انصراف</button>
+            </div>
+        </div>
+    </div>
+</div>

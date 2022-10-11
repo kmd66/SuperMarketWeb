@@ -1,0 +1,158 @@
+﻿$defaultText: #bebebe;
+.mfaNightMode {
+    color: $defaultText;
+}
+.mfaNightMode {
+    #login-wrapper input,
+    #sidebar-switch i, .form-control {
+        color: $defaultText;
+    }
+
+    hr {
+        border-top: 1px solid #6e869e;
+    }
+
+    #content {
+        background-color: #505050;
+    }
+
+    .panel-kama {
+        border-color: #6e869e;
+    }
+
+    .panel, .panel-default, .form-control {
+        background-color: #1c2b3d;
+    }
+
+    .panel-footer {
+        background-color: #0f1822;
+        border-top: 1px solid #5d6f80;
+    }
+
+    a {
+        color: #34a62d;
+    }
+
+    a:focus, a:hover {
+        color: #237c4f;
+    }
+
+    .btn-primary {
+        background-color: #3e6d9b;
+    }
+
+    .btn-cancel {
+        background-color: #435366;
+        border-color: #2e6da4;
+    }
+
+    .nav-tabs, .table-bordered {
+        border-bottom: 1px solid #6e869e;
+    }
+
+    .table-bordered {
+        border: 1px solid #6e869e;
+    }
+
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+        color: $defaultText;
+        background-color: #435366;
+        border: 1px solid #6e869e;
+    }
+
+    .nav-tabs > li > a {
+        background-color: #435366;
+        border: 1px solid #6e869e;
+    }
+
+    #toolbar {
+        background-color: #2a3f54;
+    }
+
+    .panel-default > .panel-heading, .well {
+        color: $defaultText;
+        background-color: #2a3f54;
+        border-color: #2e6da4;
+    }
+
+    .close {
+        color: #fff;
+    }
+
+    .panel-default {
+        border-color: #6e869e;
+    }
+
+    .table-bordered > tbody > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+        border: 1px solid #6e869e;
+    }
+
+    .kama-grid-table tbody tr:last-child td:last-child {
+        border-bottom: 1px solid #6e869e !important;
+    }
+
+    .kama-grid-table tbody tr:first-child td:last-child {
+        border-top: 1px solid #6e869e !important;
+        margin-top: -1px;
+    }
+
+    .cartable-filter-tree {
+        border: unset;
+        background-color: #1c2b3d;
+    }
+
+    .kama-grid-bottom {
+        background-color: #525c66;
+    }
+
+    .kama-grid-bottom select {
+        color: #fff;
+        cursor: pointer;
+        background-color: #2a3f54;
+    }
+
+    .form-value {
+        color: $defaultText;
+    }
+
+    .kama-input[kama-format-view=date]:read-only, .kama-input[kama-format-view=datestring]:read-only {
+        background-color: unset;
+    }
+
+    .toolbar-dropdown {
+        color: $defaultText;
+    }
+
+    .panel-heading.required {
+        color: #d32f2f;
+    }
+
+    .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+        background-color: #6c6c6c;
+        opacity: 1;
+    }
+
+    .table-striped > tbody > tr:nth-of-type(odd) {
+        background-color: #3f454f;
+    }
+
+    .mfaNightMode .table-striped > tbody > tr:nth-of-type(odd) {
+        background-color: #3f454f;
+    }
+
+    .complaint-cartable-action i {
+        color: #b0b0b0;
+    }
+
+    .modal-content {
+        background-color: #3f454f;
+    }
+
+    .modal-header {
+        background-color: #2a3f54;
+    }
+
+    .btn-success {
+        color: #fff;
+    }
+}

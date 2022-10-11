@@ -1,0 +1,10 @@
+﻿<script type="text/ng-template" id="not-found.html">
+    <p style="text-align: center; font-size: 22px">صفحه مورد نظر یافت نشد!</p>
+    <p style="text-align: center; margin-top: 15px"><a href="#!/">بازگشت به صفحه اصلی ⟵</a></p>
+</script>
+
+<kama-outside-template ng-if="!notFound.main.authenticated" header="خطا">
+    <div ng-include="'not-found.html'"></div>
+</kama-outside-template>
+
+<div ng-include="'not-found.html'" ng-if="notFound.main.authenticated"></div>

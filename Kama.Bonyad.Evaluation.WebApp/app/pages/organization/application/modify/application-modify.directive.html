@@ -1,0 +1,134 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+
+        <kama-error errors="modify.model.errors"></kama-error>
+
+    </div>
+    <div class="form-group col-xs-12 col-sm-6">
+        <label class="required">برنامه</label>
+        <input type="text" class="form-control" ng-model=" modify.model.Name" />
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-6">
+        <label class="required">کد</label>
+        <input type="text" class="form-control" ng-model="modify.model.Code" />
+    </div>
+
+    <div class="form-group col-xs-12">
+        <label class="required">توضیحات</label>
+        <input type="text" class="form-control" ng-model="modify.model.Comment" />
+    </div>
+    <div class="form-group col-xs-12">
+        <label class="required checkbox-label">
+        فعال
+            <input type="checkbox" ng-model="modify.model.Enabled" />
+        </label>
+    </div>
+</div>
+
+<!--clients-->
+<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default mt-10 mb-0">
+            <div class="panel-heading">Clients</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <kama-grid obj="client.grid"></kama-grid>
+                        <div class="table-responsive">
+                            <table class="table table-bordered mb-0" ng-show="client.grid.items.length">
+                                <thead>
+                                    <tr>
+                                    
+                                        <th>عنوان</th>
+                                        <th>نوع</th>
+                                        <th>توضیحات</th>
+                                        <th style="width: 95px"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in client.grid.items">
+                                        
+                                        <td>{{item.Name}}</td>
+                                        <td><kama-display-enum model="item.Type" enum="ClientType"></kama-display-enum></td>
+                                        <td>
+                                            <!--{{item.Secret ? item.Secret.length <= 40 ? item.Secret : item.Secret.substring(0, 40) + '...' : ''}}-->
+                                        </td>
+                                        <td class="grid-action" style="width: 95px">
+                                            <a href="#!quiz/edit/{{item.ID}}" ng-if="item.Type === 4" style="color: #333"><i class="fa fa-table grid-action-green" title="Details" aria-hidden="true"></i></a>
+                                            <i class="fa fa-pencil grid-action-blue" title="ویرایش" aria-hidden="true" ng-click="client.grid.edit(item)"></i>
+                                            <i class="fa fa-close grid-action-red" title="حذف" aria-hidden="true" ng-click="client.grid.remove(item)"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="btn-container col-xs-12">
+        <hr />
+        <button type="button" class="btn btn-success btn-min-width" ng-click="modify.save()">ذخیره</button>
+        <button type="button" class="btn btn-cancel btn-min-width" ng-click="modify.remove()">حذف</button>
+        <button type="button" class="btn btn-cancel btn-min-width" ng-click="main.changeState.cartable()">بازگشت</button>
+    </div>
+</div>
+
+<!--client modal-->
+<div class="modal fade" id="client-modal" role="dialog" aria-labelledby="client-modal-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="client-modal-label">
+                    <span ng-if="client.state === 'add'">Add new Client</span>
+                    <span ng-if="client.state === 'edit'">Edit Client</span>
+                </h4>
+            </div>
+            <form ng-submit="client.save()">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <kama-error errors="client.model.errors"></kama-error>
+                        </div>
+
+                        <div class="form-group col-xs-12 col-sm-6">
+                            <label class="required">عنوان</label>
+                            <input type="text" class="form-control" ng-model="client.model.Name" />
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-6">
+                            <label class="required">نوع</label>
+                            <kama-select obj="client.typeDropDown"></kama-select>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label>
+                                توضیحات
+                                <span ng-if="client.model.Secret.length">({{client.model.Secret.length}} Max 4000 letters)</span>
+                            </label>
+                            <textarea class="form-control" rows="5" ng-model="client.model.Secret"></textarea>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label class="required checkbox-label">
+                                فعال
+                                <input type="checkbox" ng-model="client.model.Enabled" />
+                            </label>
+
+                        </div>
+                        <div class="form-group col-xs-12" ng-show="[1, 2].indexOf(client.model.Type) !== -1">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer btn-container">
+                    <button type="submit" class="btn btn-success btn-min-width">ذخیره</button>
+                    <button type="button" class="btn btn-cancel btn-min-width" data-dismiss="modal">انصراف</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

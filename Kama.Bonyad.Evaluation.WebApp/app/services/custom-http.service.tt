@@ -1,0 +1,17 @@
+﻿<#@ template debug="false" hostspecific="True" language="C#" #>
+<#@ assembly name="$(ProjectDir)bin\Kama.Bonyad.Evaluation.WebApp.dll" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Web" #>
+<#@ assembly name="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Web" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="Kama.Bonyad.Evaluation.WebApp.Tools" #>
+<#@ output extension=".js" #>
+<#@ assembly name="EnvDTE" #><# /* This assembly provides access to Visual Studio project properties. */ #>
+<#
+    var str = ModuleGenerator.HttpService();
+#>
+<#=str#>

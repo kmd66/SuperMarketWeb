@@ -1,0 +1,37 @@
+﻿#minister-list-page {
+    .table-comment {
+        padding-bottom: 15px !important;
+        padding-top: 0 !important;
+
+        > div {
+            background-color: #f9f9f9;
+            margin: 0 10px;
+            padding: 10px 15px 15px;
+            border-left: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+    }
+
+
+    .has-comment {
+        color: black;
+        opacity: 1 !important;
+    }
+
+    .center-table-cell {
+        text-align: center;
+        vertical-align: middle !important;
+    }
+
+    .panel-cartable {
+        .panel {
+            margin-bottom: 5px;
+            border-radius: 0px;
+        }
+
+        .panel-heading {
+            border-bottom: none;
+        }
+    }
+}
