@@ -8,7 +8,7 @@
     , HtmlWebpackPlugin = require('html-webpack-plugin')
     , WebpackVersionFilePlugin = require('webpack-version-file-plugin')
     , extractSass = new ExtractTextPlugin({ filename: 'styles.css' })
-    , buildMode = 'prod'; // 'dev' or 'prod'
+    , buildMode = 'dev'; // 'dev' or 'prod'
 
 module.exports = {
     entry: {

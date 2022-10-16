@@ -231,6 +231,7 @@
     <Compile Include="Controllers\Organization\RoleController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\prd\TagController.cs" />
+    <Compile Include="Controllers\prd\StockController.cs" />
     <Compile Include="Controllers\prd\ProductController.cs" />
     <Compile Include="Controllers\prd\ProductClassificationController.cs" />
     <Compile Include="Controllers\Public\AttachmentController.cs" />
@@ -427,6 +428,15 @@
     <Content Include="app\dist\plugins\select2\select2.min.css" />
     <Content Include="app\dist\plugins\select2\select2.min.js" />
     <Content Include="app\dist\styles.css" />
+    <Content Include="app\pages\prd\stock\directive\cartable\stock-cartable.directive.html" />
+    <Content Include="app\pages\prd\stock\directive\cartable\stock-cartable.directive.js" />
+    <Content Include="app\pages\prd\stock\directive\add\srock-add.directive.html" />
+    <Content Include="app\pages\prd\stock\directive\add\stock-add.directive.js" />
+    <Content Include="app\pages\prd\stock\directive\modify\stock-modify.directive.html" />
+    <Content Include="app\pages\prd\stock\directive\modify\stock-modify.directive.js" />
+    <Content Include="app\pages\prd\stock\stock.controller.js" />
+    <Content Include="app\pages\prd\stock\stock.html" />
+    <Content Include="app\pages\prd\stock\stock.service.js" />
     <Content Include="app\pages\prd\product\directive\information\product-information.directive.html" />
     <Content Include="app\pages\prd\product\directive\information\product-information.directive.js" />
     <Content Include="app\pages\prd\product\directive\Tag\product-tag.directive.html" />

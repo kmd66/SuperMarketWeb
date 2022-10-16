@@ -24,8 +24,10 @@
             , {
                 name: 'store', title: 'انبار', icon: 'institution'
                 , subMenus: [
-                    { route: 'product-classific/cartable', title: 'دسته بندی کالا' }
+                    { route: 'stock/cartable', title: 'موجودی' }
+                    , { route: 'product-classific/cartable', title: 'دسته بندی کالا' }
                     , { route: 'product/cartable', title: 'اجناس' }
+                    
                 ]
             }
             , {

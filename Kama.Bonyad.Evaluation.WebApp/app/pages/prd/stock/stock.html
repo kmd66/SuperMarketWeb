@@ -1,0 +1,28 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span ng-show="stock.main.state === 'modify'">ویرایش جنس</span>
+                <span ng-show="stock.main.state === 'cartable'">‌جنس‌ها</span>
+            </div>
+            <div class="panel-body">
+                <kama-stock-cartable main="stock.main"
+                                     cartable="stock.cartable"
+                                     search="stock.search"
+                                     ng-show="stock.main.state === 'cartable'"></kama-stock-cartable>
+
+                <kama-stock-modify main="stock.main"
+                                   modify="stock.modify"
+                                   cartable="stock.cartable"
+                                   add="stock.add"
+                                   ng-show="stock.main.state === 'modify'"></kama-stock-modify>
+
+                <kama-stock-modify main="stock.main"
+                                   cartable="stock.cartable"
+                                   add="stock.add"
+                                   ng-show="stock.main.state === 'add'"></kama-stock-modify>
+
+            </div>
+        </div>
+    </div>
+</div>

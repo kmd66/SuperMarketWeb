@@ -57,6 +57,12 @@
             Delete: new RequestService('Tag/Delete'),
             List: new RequestService('Tag/List'),
         };
+        httpService.Stock = {
+            Save: new RequestService('Stock/Save'),
+            Get: new RequestService('Stock/Get'),
+            List: new RequestService('Stock/List'),
+            Delete: new RequestService('Stock/Delete'),
+        };
         httpService.Product = {
             Save: new RequestService('Product/Save'),
             Delete: new RequestService('Product/Delete'),
