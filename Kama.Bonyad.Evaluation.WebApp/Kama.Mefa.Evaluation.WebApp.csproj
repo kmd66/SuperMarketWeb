@@ -430,7 +430,7 @@
     <Content Include="app\dist\styles.css" />
     <Content Include="app\pages\prd\stock\directive\cartable\stock-cartable.directive.html" />
     <Content Include="app\pages\prd\stock\directive\cartable\stock-cartable.directive.js" />
-    <Content Include="app\pages\prd\stock\directive\add\srock-add.directive.html" />
+    <Content Include="app\pages\prd\stock\directive\add\stock-add.directive.html" />
     <Content Include="app\pages\prd\stock\directive\add\stock-add.directive.js" />
     <Content Include="app\pages\prd\stock\directive\modify\stock-modify.directive.html" />
     <Content Include="app\pages\prd\stock\directive\modify\stock-modify.directive.js" />
