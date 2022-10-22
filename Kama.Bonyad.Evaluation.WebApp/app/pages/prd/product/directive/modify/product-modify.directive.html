@@ -26,35 +26,36 @@
               rows="4"
               ng-model="modify.model.Comment"></textarea>
 </div>
+<div ng-show="modify.model.ID">
+    <div class="col-xs-12" style="margin-top:10px">
+        <ul class="nav nav-tabs">
+            <li ng-class="{'active': modify.tabNumber == 1}">
+                <a href="" ng-click="modify.tabNumber = 1">تصویر</a>
+            </li>
+            <li ng-class="{'active': modify.tabNumber == 2}">
+                <a href="" ng-click="modify.tabNumber = 2; ">برچسب</a>
+            </li>
+            <li ng-class="{'active': modify.tabNumber == 3}">
+                <a href="" ng-click="modify.tabNumber = 3; ">اطلاعات جنس</a>
+            </li>
+        </ul>
+    </div>
 
-<div class="col-xs-12" style="margin-top:10px">
-    <ul class="nav nav-tabs">
-        <li ng-class="{'active': modify.tabNumber == 1}">
-            <a href="" ng-click="modify.tabNumber = 1">تصویر</a>
-        </li>
-        <li ng-class="{'active': modify.tabNumber == 2}">
-            <a href="" ng-click="modify.tabNumber = 2; ">برچسب</a>
-        </li>
-        <li ng-class="{'active': modify.tabNumber == 3}">
-            <a href="" ng-click="modify.tabNumber = 3; ">اطلاعات جنس</a>
-        </li>
-    </ul>
-</div>
-
-<div class="tab-pane" ng-show="modify.tabNumber == 1">
+    <div class="tab-pane" ng-show="modify.tabNumber == 1">
         <img-attachment obj="modify.img"></img-attachment>
+    </div>
+
+    <kama-product-tag main="main"
+                      modify="modify"
+                      tag="tag"></kama-product-tag>
+    <kama-product-information main="main"
+                              modify="modify"></kama-product-information>
 </div>
-
-<kama-product-tag main="main"
-                  modify="modify"
-                  tag="tag"></kama-product-tag>
-<kama-product-information main="main"
-                          modify="modify"></kama-product-information>
-
 <div class="col-xs-12 "><hr /></div>
 <!--button-->
 
 <div class="col-xs-12 btn-container">
-    <button ng-click="modify.save()" class="btn btn-success btn-min-width">ثبت</button>
+    <button ng-show="!modify.model.ID" ng-click="modify.save(fslse)" class="btn btn-success btn-min-width">ثبت اولیه</button>
+    <button ng-show="modify.model.ID" ng-click="modify.save(true)" class="btn btn-success btn-min-width">ثبت</button>
     <button ng-click="main.changeState.cartable()" type="button" class="btn btn-cancel btn-min-width">بازگشت</button>
 </div>

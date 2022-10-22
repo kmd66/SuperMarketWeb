@@ -35,7 +35,7 @@
                 , select2: true
             };
 
-            function save() {
+            function save(getCartable) {
                 loadingService.show();
                 product.modify.model.Information = JSON.stringify(product.modify.Information);
                 productService.save(product.modify.model).then((result) => {
@@ -43,8 +43,10 @@
                     return product.modify.img.save(product.modify.model.GuID);
                 }).then((result) => {
                     alertService.success('جنس با موفقیت ثبت شد');
-                    product.main.changeState.cartable();
-                    return  product.cartable.grid.getlist(false);
+                    if (getCartable) {
+                        product.main.changeState.cartable();
+                        return product.cartable.grid.getlist(false);
+                    }
                 }).catch(alertService.error).finally(loadingService.hide);
 
             }

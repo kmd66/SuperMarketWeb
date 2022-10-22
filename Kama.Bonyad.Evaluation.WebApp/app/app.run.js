@@ -25,8 +25,8 @@
                 name: 'store', title: 'انبار', icon: 'institution'
                 , subMenus: [
                     { route: 'stock/cartable', title: 'موجودی' }
-                    , { route: 'product-classific/cartable', title: 'دسته بندی کالا' }
                     , { route: 'product/cartable', title: 'اجناس' }
+                    , { route: 'product-classific/cartable', title: 'دسته بندی کالا' }
                     
                 ]
             }
