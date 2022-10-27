@@ -7,6 +7,7 @@
     function stockService(httpService) {
         let service = {
             save: save
+            , addList: addList
             , get: get
             , list: list
             , remove: remove
@@ -16,6 +17,9 @@
 
         function save(model) {
             return httpService.Stock.Save(model);
+        }
+        function addList(model) {
+            return httpService.Stock.AddList(model);
         }
         function get (model) {
             return httpService.Stock.Get(model);

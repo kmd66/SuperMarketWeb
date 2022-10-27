@@ -29,7 +29,8 @@
             stock.cartable.grid = {
                 bindingObject: stock.cartable
                 , columns: [
-                    { name: 'Name', displayName: 'نام' }
+                    { name: 'ID', displayName: 'شناسه' }
+                    , { name: 'Name', displayName: 'نام' }
                     , { name: 'ClassificationName', displayName: 'نام دسته' }
                     , { name: 'Count', displayName: 'تعداد' }
                 ]
@@ -37,7 +38,7 @@
                 , pageSize: 100//globalService.get('userSettings').PageSize
                 , options: () => { return stock.search.model; }
                 , listService: stockService.list
-                , onAdd: () => { }
+                , onAdd: stock.main.changeState.add
                 , onEdit: stock.main.changeState.modify
                 , deleteService: stockService.remove
             };

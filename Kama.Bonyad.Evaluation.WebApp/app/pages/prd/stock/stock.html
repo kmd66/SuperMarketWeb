@@ -14,13 +14,12 @@
                 <kama-stock-modify main="stock.main"
                                    modify="stock.modify"
                                    cartable="stock.cartable"
-                                   add="stock.add"
                                    ng-show="stock.main.state === 'modify'"></kama-stock-modify>
 
-                <kama-stock-modify main="stock.main"
+                <kama-stock-add main="stock.main"
                                    cartable="stock.cartable"
                                    add="stock.add"
-                                   ng-show="stock.main.state === 'add'"></kama-stock-modify>
+                                   ng-show="stock.main.state === 'add'"></kama-stock-add>
 
             </div>
         </div>

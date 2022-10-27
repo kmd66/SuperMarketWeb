@@ -24,6 +24,13 @@ namespace Kama.Bonyad.Evaluation.WebApp.Controllers
             return Json(result);
         }
 
+        [HttpPost, Route("AddList")]
+        public async Task<JsonResult> AddList(List<Stock> model)
+        {
+            var result = await _service.AddList(model);
+            return Json(result);
+        }
+
         [HttpPost]
         public async Task<JsonResult> Get(Stock model)
         {

@@ -3,8 +3,8 @@
         .module('evaluation')
         .controller('StockController', StockController);
 
-    StockController.$inject = ['ObjectService', 'stockService', 'productClassificationService', '$timeout', '$routeParams', '$location', 'loadingService', 'alertService', '$q', 'attachmentService'];
-    function StockController(ObjectService, stockService, productClassificationService, $timeout, $routeParams, $location, loadingService, alertService, $q, attachmentService) {
+    StockController.$inject = ['ObjectService', 'stockService', 'productClassificationService', '$timeout', '$routeParams', '$location', 'loadingService', 'alertService', '$q', 'productService'];
+    function StockController(ObjectService, stockService, productClassificationService, $timeout, $routeParams, $location, loadingService, alertService, $q, productService) {
 
 
         let stock = this;
@@ -54,8 +54,37 @@
 
         }
         function add() {
+            loadingService.show();
+            stock.add.list = [];
+            stock.add.saveList = [];
+            stock.add.paramsAddSaveList = null;
             stock.main.state = 'add';
             $location.path(`stock/add`);
+            productService.list({}).then((result) => {
+                stock.add.resultList = result;
+                
+                //var request = indexedDB.open('db', 2);
+                //request.onupgradeneeded = function (event) {
+                //    var db = event.target.result;
+                //    if (!db.objectStoreNames.contains("product"))
+                //        db.createObjectStore('product', {
+                //        autoIncrement: false
+                //    });
+                //};
+
+                //request.onsuccess = function (event) {
+                //    var db = event.target.result;
+                //    var tx = db.transaction('product', "readwrite");
+                //    var store = tx.objectStore('product');
+
+                //    store.clear();
+                //    result.forEach(data => {
+                //        store.add(data.Name, data.ID);
+                //    })
+
+                //    db.close();
+                //};
+            }).catch(alertService.error).finally(loadingService.hide);
         }
         function cartable() {
             stock.main.state = 'cartable';
@@ -71,9 +100,10 @@
         }
         function reset() {
             stock.modify.model = {};
-            stock.add.showAdd = null;
-            stock.add.model = {};
-            stock.add.listModel = [];
+            stock.modify.add = {};
+            stock.modify.add.showAdd = null;
+            stock.modify.add.model = {};
+            stock.modify.add.listModel = [];
         }
         function update() {
             //if (stock.modify.parentstockDropdown)

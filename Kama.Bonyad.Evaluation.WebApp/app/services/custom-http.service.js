@@ -59,6 +59,7 @@
         };
         httpService.Stock = {
             Save: new RequestService('Stock/Save'),
+            AddList: new RequestService('Stock/AddList'),
             Get: new RequestService('Stock/Get'),
             List: new RequestService('Stock/List'),
             Delete: new RequestService('Stock/Delete'),
