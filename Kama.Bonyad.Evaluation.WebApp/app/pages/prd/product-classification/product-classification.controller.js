@@ -40,6 +40,7 @@
             });//.finally(loadingService.hide);
         }
         function add() {
+            attachmentReset();
             productClassific.modify.model = {};
             productClassific.modify.resetAttachments();
             productClassific.main.state = 'add';
