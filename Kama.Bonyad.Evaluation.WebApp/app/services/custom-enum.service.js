@@ -264,6 +264,7 @@
 				'20': 'همه موارد'
 			},
 			enumService.DocState = {
+				'1': 'انبار'
 			},
 			enumService.OpinionType = {
 				'1': 'تایید',
@@ -273,13 +274,17 @@
 			enumService.SendType = {
 				'1': 'ارسال',
 				'2': 'عدم تایید',
-				'3': 'بازگشت توسط گیرنده',
-				'4': 'بازگشت توسط ارجاع دهنده',
-				'90': 'ارسال توسط سیستم'
+				'250': 'ارسال توسط سیستم'
 			},
 			enumService.AttachmentType = {
 				'1': 'تصویر دسته بندی',
 				'2': 'تصویر دسته کالا'
+			},
+			enumService.UnitOfMeasureType = {
+				'1': 'عدد',
+				'2': 'بسته',
+				'3': 'کیلو',
+				'4': 'متر'
 			},
 			enumService.SendMessageReasonType = {
 				'1': 'ComplaintSentByUser',

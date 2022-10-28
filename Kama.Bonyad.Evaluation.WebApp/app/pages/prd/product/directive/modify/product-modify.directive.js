@@ -3,8 +3,8 @@
         .module('evaluation')
         .directive('kamaProductModify', kamaProductModify);
 
-    kamaProductModify.$inject = ['productService', 'loadingService', 'alertService'];
-    function kamaProductModify(productService, loadingService, alertService) {
+    kamaProductModify.$inject = ['productService', 'loadingService', 'alertService', 'enumService'];
+    function kamaProductModify(productService, loadingService, alertService, enumService) {
         let directive = {
             link: {
                 pre: preLink
@@ -27,6 +27,11 @@
             product.modify.img = {
                 Type: 2,
                 hideHead: true
+            };
+            product.modify.unitOfMeasureTypeDropDown = {
+                items: enumService.UnitOfMeasureType
+                , bindingObject: product.modify
+                , parameters: { ID: 'UnitOfMeasure', Name: 'UnitOfMeasureName' }
             };
 
             product.modify.parentProductDropdown = {

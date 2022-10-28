@@ -37,6 +37,7 @@
 
                 loadingService.show();
                 productClassificationService.save(productClassific.modify.model).then((result) => {
+                    productClassific.modify.model = result;
                     return productClassific.modify.img.save(productClassific.modify.model.GuID);
                 }).then((result) => {
                     alertService.success('دسته بندی با موفقیت ثبت شد');

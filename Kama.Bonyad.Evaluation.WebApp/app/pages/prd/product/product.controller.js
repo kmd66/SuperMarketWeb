@@ -88,6 +88,8 @@
         function update() {
             if (product.modify.parentProductDropdown)
                 product.modify.parentProductDropdown.update();
+            if (product.modify.unitOfMeasureTypeDropDown)
+                product.modify.unitOfMeasureTypeDropDown.update();
         }
     }
 })();
