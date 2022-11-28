@@ -1,0 +1,23 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span ng-show="brand.main.state === 'add'">ایجاد برند</span>
+                <span ng-show="brand.main.state === 'edit'">ویرایش برند</span>
+                <span ng-show="brand.main.state === 'cartable'">‌برند‌ها</span>
+            </div>
+            <div class="panel-body">
+                <kama-brand-cartable main="brand.main"
+                                                      cartable="brand.cartable"
+                                                      search="brand.search"
+                                                      ng-show="brand.main.state === 'cartable'"></kama-brand-cartable>
+
+                <kama-brand-modify main="brand.main"
+                                                    modify="brand.modify"
+                                                    cartable="brand.cartable"
+                                                    ng-show="['add', 'edit'].indexOf(brand.main.state) !== -1"></kama-brand-modify>
+
+            </div>
+        </div>
+    </div>
+</div>

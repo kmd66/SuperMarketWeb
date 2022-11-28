@@ -26,6 +26,8 @@
             .when('/product-classific/:state/:id?', { template: require('./pages/prd/product-classification/product-classification.html'), controller: 'ProductClassificationController', controllerAs: 'productClassific', reloadOnUrl: false })
             .when('/product/:state/:id?', { template: require('./pages/prd/product/product.html'), controller: 'ProductController', controllerAs: 'product', reloadOnUrl: false })
             .when('/stock/:state/:id?', { template: require('./pages/prd/stock/stock.html'), controller: 'StockController', controllerAs: 'stock', reloadOnUrl: false })
+
+            .when('/brand/:state/:id?', { template: require('./pages/pbl/brand/brand.html'), controller: 'BrandController', controllerAs: 'brand', reloadOnUrl: false })
             //--------api-------//
 
 

@@ -68,10 +68,13 @@
             $location.path(`product/cartable`);
         }
         function setParent(b) {
-            productClassificationService.list({}).then((result) => {
+            productClassificationService.list({ LastNode: true }).then((result) => {
                 product.main.Parents = result;
                 product.search.parentProductDropdown.setItems(product.main.Parents);
                 product.modify.parentProductDropdown.setItems(product.main.Parents);
+                return productClassificationService.list({ FirstNode: true });
+            }).then((result) => {
+                    product.modify.filterParentProductDropdown.setItems(result);
                 if (b)
                     return product.cartable.grid.getlist(false);
             }).finally(loadingService.hide);
@@ -86,9 +89,12 @@
             product.modify.Information = {};
         }
         function update() {
-            if (product.modify.parentProductDropdown)
+            if (product.modify.filterParentProductDropdown && product.modify.filterParentProductDropdown.update)
+                product.modify.filterParentProductDropdown.update();
+            if (product.modify.parentProductDropdown && product.modify.parentProductDropdown.update)
                 product.modify.parentProductDropdown.update();
-            if (product.modify.unitOfMeasureTypeDropDown)
+
+            if (product.modify.unitOfMeasureTypeDropDown && product.modify.unitOfMeasureTypeDropDown.update)
                 product.modify.unitOfMeasureTypeDropDown.update();
         }
     }

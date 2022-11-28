@@ -83,6 +83,12 @@
             Get: new RequestService('Attachment/Get'),
             List: new RequestService('Attachment/List'),
         };
+        httpService.Brand = {
+            Save: new RequestService('Brand/Save'),
+            Delete: new RequestService('Brand/Delete'),
+            Get: new RequestService('Brand/Get'),
+            List: new RequestService('Brand/List'),
+        };
         httpService.SmsSecurityStamp = {
             Send: new RequestService('SmsSecurityStamp/Send'),
             Verify: new RequestService('SmsSecurityStamp/Verify'),

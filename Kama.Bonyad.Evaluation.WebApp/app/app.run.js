@@ -33,7 +33,7 @@
             , {
                 name: 'basic-info', title: 'اطلاعات پایه', icon: 'list-ul'
                 , subMenus: [
-                    { route: 'announcement', title: '-' }
+                    { route: 'brand/cartable', title: 'برند' }
                 ]
             }
             , {

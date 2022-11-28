@@ -3,8 +3,8 @@
         .module('evaluation')
         .directive('kamaProductModify', kamaProductModify);
 
-    kamaProductModify.$inject = ['productService', 'loadingService', 'alertService', 'enumService'];
-    function kamaProductModify(productService, loadingService, alertService, enumService) {
+    kamaProductModify.$inject = ['productService', 'loadingService', 'alertService', 'enumService', 'productClassificationService', 'brandService', '$q'];
+    function kamaProductModify(productService, loadingService, alertService, enumService, productClassificationService, brandService, $q) {
         let directive = {
             link: {
                 pre: preLink
@@ -34,10 +34,42 @@
                 , parameters: { ID: 'UnitOfMeasure', Name: 'UnitOfMeasureName' }
             };
 
+            product.modify.filterParentProductDropdown = {
+                bindingObject: product.modify
+                , parameters: { GuID: 'FilterParentID', ID: 'FilterParentIntID' }
+                , select2: true
+                , onChange: (selected, props) => {
+                    if (!props.isEmpty) {
+                        loadingService.show();
+                        return $q.resolve().then(() => {
+                            return product.modify.parentProductDropdown.getlist();
+                        }).then(() => {
+                            return product.modify.berandDropdown.getlist();
+                        }).finally(loadingService.hide);
+                    }
+                }
+            };
+
             product.modify.parentProductDropdown = {
                 bindingObject: product.modify
                 , parameters: { ID: 'ParentID' }
                 , select2: true
+                , options: () => {
+                    if (product.modify.model.FilterParentID)
+                        return { ParentID: product.modify.model.FilterParentID }
+                    else
+                        return { LastNode: true }
+                }
+                , listService: productClassificationService.list
+            };
+
+            product.modify.berandDropdown = {
+                bindingObject: product.modify
+                , parameters: { ID: 'BrandID' }
+                , select2: true
+                , listService: () => {
+                    return brandService.list({ ParentID: product.modify.model.FilterParentIntID });
+                }
             };
 
             function save(getCartable) {
