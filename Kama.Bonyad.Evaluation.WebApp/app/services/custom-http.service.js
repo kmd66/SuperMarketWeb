@@ -63,6 +63,7 @@
             Get: new RequestService('Stock/Get'),
             List: new RequestService('Stock/List'),
             Delete: new RequestService('Stock/Delete'),
+            ChangeState: new RequestService('Stock/ChangeState'),
         };
         httpService.Product = {
             Save: new RequestService('Product/Save'),
@@ -88,10 +89,6 @@
             Delete: new RequestService('Brand/Delete'),
             Get: new RequestService('Brand/Get'),
             List: new RequestService('Brand/List'),
-        };
-        httpService.SmsSecurityStamp = {
-            Send: new RequestService('SmsSecurityStamp/Send'),
-            Verify: new RequestService('SmsSecurityStamp/Verify'),
         };
         httpService.Department = {
             Add: new RequestService('Department/Add'),

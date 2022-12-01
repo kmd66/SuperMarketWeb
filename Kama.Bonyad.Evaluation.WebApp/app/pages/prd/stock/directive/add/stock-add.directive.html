@@ -1,5 +1,4 @@
 ﻿
-
 <div ng-show="!add.paramsAddSaveList">
     <div class="form-group col-xs-12 col-sm-6 col-md-3">
         <label>نام/شناسه</label>
@@ -12,11 +11,16 @@
 
 <div ng-show="add.paramsAddSaveList">
     <div class="form-group col-xs-12 col-sm-6 col-md-3">
-        <label>تعداد</label>
-        <input class="form-control" ng-change="add.searchChange()" ng-model="add.paramsAddSaveList.Count" />
+        <label class="required">تعداد</label>
+        <input class="form-control"  ng-model="add.paramsAddSaveList.Count" />
     </div>
+    <div class="form-group col-xs-12 col-sm-6 col-md-3">
+        <label class="required">تاریخ انقضا</label>
+        <kama-input model="add.paramsAddSaveList.Expired" type="date"></kama-input>
+    </div>
+
     <div class="col-xs-12 ">
-        نام : {{add.paramsAddSaveList.Name}}, شناسه : {{add.paramsAddSaveList.ID}}
+        شناسه : {{add.paramsAddSaveList.ID}}, نام : {{add.paramsAddSaveList.Name}}
     </div>
     <div class="col-xs-12">
         <button ng-click="add.addSaveList()" type="button" class="btn btn-info btn-min-width">افزودن</button>
@@ -25,7 +29,10 @@
 
 <div class="col-xs-12 "><hr /></div>
 <div class="col-xs-12 " ng-repeat="item in add.saveList" style=" margin-top: 7px;">
-    نام : {{item.Name}}, شناسه : {{item.ID}}, تعداد : {{item.Count}}
+    <span class="font-bold">نام</span>: {{item.Name}}
+    | <span class="font-bold">شناسه</span>: {{item.ID}}
+    | <span class="font-bold">تعداد</span>: {{item.Count}}
+    | <span class="font-bold">تاریخ انقضا</span>: <kama-display-jalali model="item.Expired"></kama-display-jalali>
 </div>
 <div class="col-xs-12 "><hr /></div>
 

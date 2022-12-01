@@ -6,8 +6,12 @@
 
 
     <div class="form-group col-xs-12 col-sm-6 col-md-3">
-        <label>تعداد</label>
+        <label class="required">تعداد</label>
         <input class="form-control" kama-prevent="letter" ng-model="modify.add.model.Count" />
+    </div>
+    <div class="form-group col-xs-12 col-sm-6 col-md-3">
+        <label class="required">تاریخ انقضا</label>
+        <kama-input model="modify.add.model.Expired" type="date"></kama-input>
     </div>
 
     <div class="col-xs-12 "><hr /></div>

@@ -33,7 +33,7 @@
                     case 'add':
                         return add();
                     case 'edit':
-                        return edit({ ID: $routeParams.id });
+                        return edit({ GuID: $routeParams.id });
                 }
             }).then(() => {
                 brand.cartable.grid.getlist(true);
@@ -41,6 +41,7 @@
             });//.finally(loadingService.hide);
         }
         function add() {
+            attachmentReset();
             update();
             brand.modify.model = {};
             brand.modify.resetAttachments();
@@ -48,13 +49,12 @@
             $location.path(`brand/add`);
         }
         function edit(selected) {
-            var id = selected.GuID;
-            if (!id)
-                id = selected.ID;
+            attachmentReset();
 
             loadingService.show();
-            return brandService.get({ GuID: id }).then((result) => {
+            return brandService.get({ GuID: selected.GuID }).then((result) => {
                 brand.modify.model = result;
+                brand.modify.img.bindingObject = brand.modify.model.Attachment;
                 update();
                 brand.main.state = 'edit';
                 $location.path(`brand/edit/${brand.modify.model.GuID}`);
@@ -71,6 +71,14 @@
             }).finally(loadingService.hide);
         }
         function update() {
+            if (brand.modify.parentBrandDropdown && brand.modify.parentBrandDropdown.update)
+                brand.modify.parentBrandDropdown.update();
+            if (brand.search.parentBrandDropdown && brand.search.parentBrandDropdown.update)
+                brand.search.parentBrandDropdown.update();
+        }
+        function attachmentReset() {
+            if (brand.modify.img.reset)
+                brand.modify.img.reset();
         }
     }
 })();

@@ -11,6 +11,19 @@
                 <div class="col-xs-12">
                     <div class="cartable-action" ng-click="cartable.grid.getlist()"><span>به‌روز‌رسانی</span><i class="fa fa-refresh" aria-hidden="true"></i></div>
                     <div class="cartable-action" ng-click="search.state = 'show'"><span>جستجو</span><i class="fa fa-search" aria-hidden="true"></i></div>
+
+                    <div class="cartable-filter" ng-class="{ 'cartable-filter-selected': search.model.ActionState === 1 }">
+                        <a ng-click="cartable.setActionState(1);">موجودی انبار</a>
+                    </div>
+                    <div class="cartable-filter" ng-class="{ 'cartable-filter-selected': search.model.ActionState === 2 }">
+                        <a ng-click="cartable.setActionState(2);">هشدار موجودی</a>
+                    </div>
+                    <div class="cartable-filter" ng-class="{ 'cartable-filter-selected': search.model.ActionState === 3 }">
+                        <a ng-click="cartable.setActionState(3);">انقضا</a>
+                    </div>
+                    <div class="cartable-filter" ng-class="{ 'cartable-filter-selected': search.model.ActionState === 4 }">
+                        <a ng-click="cartable.setActionState(4);">هشدار انقضا</a>
+                    </div>
                 </div>
             </div>
         </div>

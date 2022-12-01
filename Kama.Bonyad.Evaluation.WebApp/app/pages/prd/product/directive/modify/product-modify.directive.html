@@ -39,9 +39,15 @@
     <kama-select obj="modify.unitOfMeasureTypeDropDown"></kama-select>
 </div>
 
-<div class="form-group col-xs-12 col-sm-6 col-md-3">
-    <label>حداقل موجودی برای هشدار</label>
-    <input class="form-control" kama-prevent="letter" ng-model="modify.model.MinimumToAlert" />
+<div class="form-group col-xs-12">
+    <div class="form-group col-xs-12 col-sm-6 col-md-3">
+        <label>حداقل موجودی برای هشدار</label>
+        <input class="form-control" kama-prevent="letter" ng-model="modify.model.MinimumToAlert" />
+    </div>
+    <div class="form-group col-xs-12 col-sm-6 col-md-3">
+        <label>هشدار انقضا (روز)</label>
+        <input class="form-control" kama-prevent="letter" ng-model="modify.model.ExpiredToAlert" />
+    </div>
 </div>
 
 <div class="form-group col-xs-12"></div>

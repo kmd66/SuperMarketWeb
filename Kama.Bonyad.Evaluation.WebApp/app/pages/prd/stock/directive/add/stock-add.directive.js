@@ -45,12 +45,24 @@
             }
 
             function addSaveList(item) {
-                if (stock.add.paramsAddSaveList.Count > 0) {
-                    stock.add.saveList.push({ ID: stock.add.paramsAddSaveList.ID, Name: stock.add.paramsAddSaveList.Name, Count: stock.add.paramsAddSaveList.Count });
+                if (stock.add.paramsAddSaveList.Expired) {
+                    var minExpiredDate  = new Date();
+                    minExpiredDate.setDate(minExpiredDate.getDate() + 1);
+                    if (minExpiredDate > stock.add.paramsAddSaveList.Expired)
+                        return alertService.error('تاریخ انقضا کم است!');
+                }
+
+                if (stock.add.paramsAddSaveList.Count > 0 && stock.add.paramsAddSaveList.Expired) {
+                    stock.add.saveList.push({
+                        ID: stock.add.paramsAddSaveList.ID, Name: stock.add.paramsAddSaveList.Name
+                        , Count: stock.add.paramsAddSaveList.Count, Expired: stock.add.paramsAddSaveList.Expired
+                    });
                     stock.add.paramsAddSaveList = null;
                     stock.add.search = '';
                     stock.add.list = [];
                 }
+                else
+                    alertService.error('تعداد و تاریخ انقضا را مشخص کنید');
             }
 
             function save() {

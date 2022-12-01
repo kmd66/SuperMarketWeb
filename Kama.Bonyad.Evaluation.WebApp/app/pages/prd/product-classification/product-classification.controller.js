@@ -33,7 +33,7 @@
                     case 'add':
                         return add();
                     case 'edit':
-                        return edit({ ID: $routeParams.id });
+                        return edit({ GuID: $routeParams.id });
                 }
             }).then(() => {
                 setParent(true);
@@ -48,8 +48,6 @@
         }
         function edit(selected) {
             var id = selected.GuID;
-            if (!id)
-                id = selected.ID;
             attachmentReset();
             //productClassific.modify.resetAttachments();
 

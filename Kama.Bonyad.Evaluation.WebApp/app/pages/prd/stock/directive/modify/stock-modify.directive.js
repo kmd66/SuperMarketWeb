@@ -28,6 +28,7 @@
                 , columns: [
                     { name: 'Date', displayName: 'تاریخ ایجاد', type: 'date' }
                     , { name: 'FromPositionName', displayName: 'نام ایجاد کننده' }
+                    , { name: 'Expired', displayName: 'تاریخ انقضا', type: 'date' }
                     , { name: 'Count', displayName: 'تعداد' }
                 ]
                 , initload: false

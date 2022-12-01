@@ -17,10 +17,31 @@
                                    ng-show="stock.main.state === 'modify'"></kama-stock-modify>
 
                 <kama-stock-add main="stock.main"
-                                   cartable="stock.cartable"
-                                   add="stock.add"
-                                   ng-show="stock.main.state === 'add'"></kama-stock-add>
+                                cartable="stock.cartable"
+                                add="stock.add"
+                                ng-show="stock.main.state === 'add'"></kama-stock-add>
 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--group remove modal-->
+<div class="modal fade" id="stock-change-state" role="dialog" aria-labelledby="stock-change-state-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="stock-change-state-label">تغییر وضعیت</h4>
+            </div>
+            <div class="modal-body">
+                <p>درصورتی که از تغییر وضعیت ({{stock.cartable.delete.Name}}) اطمینان دارید بر روی یکی از گزینه های زیر کلیک کنید</p>
+            </div>
+            <div class="modal-footer btn-container">
+                <button type="button" class="btn btn-success btn-min-width" ng-click="stock.cartable.stockChangeState(221)">مرجوع به تولید کننده</button>
+                <button type="button" class="btn btn-danger btn-min-width" ng-click="stock.cartable.stockChangeState(222)">دور ریز</button>
+                <button type="button" class="btn btn-default btn-min-width" data-dismiss="modal">انصراف</button>
             </div>
         </div>
     </div>

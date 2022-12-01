@@ -39,16 +39,23 @@ namespace Kama.Bonyad.Evaluation.WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> List(Stock model)
+        public async Task<JsonResult> List(StockVM model)
         {
             var result = await _service.List(model);
             return Json(result);
         }
 
         [HttpPost]
-        public async Task<JsonResult> Delete(Product model)
+        public async Task<JsonResult> Delete(Stock model)
         {
             return Json(Result.Failure(message: "اجازه انجام این کار وجود ندارد"));
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> ChangeState(StockChengState model)
+        {
+            var result = await _service.ChangeState(model);
+            return Json(result);
         }
 
     }

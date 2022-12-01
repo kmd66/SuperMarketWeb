@@ -68,7 +68,7 @@
                 , parameters: { ID: 'BrandID' }
                 , select2: true
                 , listService: () => {
-                    return brandService.list({ ParentID: product.modify.model.FilterParentIntID });
+                    return brandService.list({ ParentID: product.modify.model.FilterParentIntID1 });
                 }
             };
 

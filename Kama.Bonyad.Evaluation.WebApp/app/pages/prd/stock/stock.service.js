@@ -11,6 +11,7 @@
             , get: get
             , list: list
             , remove: remove
+            , changeState: changeState
         };
 
         return service;
@@ -29,6 +30,9 @@
         }
         function remove(model) {
             return httpService.Stock.Delete(model);
+        }
+        function changeState(model) {
+            return httpService.Stock.ChangeState(model);
         }
     }
 })();

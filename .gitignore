@@ -11,6 +11,9 @@
 **/Views/Inside/Index.cshtml
 **/Views/Outside/Index.cshtml
 
+*.zip
+*.rar
+*.7z
 # User-specific files
 *.suo
 *.user
