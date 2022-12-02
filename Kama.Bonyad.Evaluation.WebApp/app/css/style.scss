@@ -1,4 +1,9 @@
 ﻿@import 'variables';
+$alertColor1: #08d700;
+$alertColor2: #00d7d7;
+$alertColor3: #d700d5;
+$alertColor4: #d70000;
+$alertColor5: #6200d7;
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
     display: none !important;
@@ -353,4 +358,57 @@ label.required, .panel-heading.required {
 }
 .font-bold {
     font-weight: 700;
+}
+// allert
+.allertBox {
+    text-align: center;
+    color: whitesmoke;
+    padding: 15px 0px;
+    margin: 10px;
+    cursor: pointer;
+}
+.allertToolBar {
+    width: 20%;
+    height: unset !important;
+    text-align: center;
+    display: inline-block;
+    color: whitesmoke;
+    padding: 0px !important;
+    margin: 0px !important;
+    cursor: pointer;
+}
+.allertToolBarParent {
+    display: flex;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.alertBackgroundColor1 {
+    background-color: $alertColor1;
+}
+.alertBackgroundColor2 {
+    background-color: $alertColor2;
+}
+.alertBackgroundColor3 {
+    background-color: $alertColor3;
+}
+.alertBackgroundColor4 {
+    background-color: $alertColor4;
+}
+.alertBackgroundColor5 {
+    background-color: $alertColor5;
+}
+.alertColor1 {
+    color: $alertColor1;
+}
+.alertColor2 {
+    color: $alertColor2;
+}
+.alertColor3 {
+    color: $alertColor3;
+}
+.alertColor4 {
+    color: $alertColor4;
+}
+.alertColor5 {
+    color: $alertColor5;
 }

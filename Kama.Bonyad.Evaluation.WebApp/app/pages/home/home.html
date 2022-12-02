@@ -1,30 +1,45 @@
 ﻿<div class="row">
-    <!--<div class="col-xs-12" ng-if="home.main.complaints.length">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                وضعیت شکوائیه‌های ثبت شده
-                ({{home.main.complaints.length === 4 ? '4' : home.main.complaints.length}} شکوائیه آخر)
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-6 col-md-3" style="margin-bottom: 15px" ng-repeat="complaint in home.main.complaints">
-                        <div class="alert-success" style="padding: 15px; border-radius: 4px">
-                            <p>تاریخ ثبت: <kama-display-jalali model="complaint.CreationDate"></kama-display-jalali></p>
-                            <p>منبع مالیاتی: <kama-display-enum model="complaint.TaxSource" enum="TaxSource"></kama-display-enum></p>
-                            <p style="margin: 0">آخرین وضعیت: <kama-display-enum model="complaint.LastState" enum="ComplaintTaxPayerDocState"></kama-display-enum></p>
-                        </div>
-                    </div>
-                </div>
-                <a href="#!complaint-one/cartable">مشاهده کلیه شکوائیه‌های ثبت شده</a>
-            </div>
-        </div>
-    </div>-->
     <div class="col-xs-12">
         <div class="panel panel-default">
             <div class="panel-heading">اطلاعیه‌ها و اخبار</div>
             <div class="panel-body">
-                <kama-announcement announcements="home.main.announcements"
-                                   loading="home.main.loadingAnnouncements"></kama-announcement>
+                <div class="panel-body">
+
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="allertBox alertBackgroundColor1">
+                            <div style="font-size: 22px;">5</div>
+                            <div>دردست اقدام</div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="allertBox alertBackgroundColor2">
+                            <div style="font-size: 22px;">5</div>
+                            <div>سفارش</div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="allertBox alertBackgroundColor3">
+                            <div style="font-size: 22px;">5</div>
+                            <div>هشدارانبار</div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="allertBox alertBackgroundColor4">
+                            <div style="font-size: 22px;">5</div>
+                            <div>انقضا</div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="allertBox alertBackgroundColor5">
+                            <div style="font-size: 22px;">5</div>
+                            <div>هشدارانقضا</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
