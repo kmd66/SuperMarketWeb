@@ -23,12 +23,14 @@
             //--------Org-------//
 
             //--------api-------//
+            .when('/saleinperson/', { template: require('./pages/prd/stock/saleinperson/saleinperson.html'), controller: 'SaleinpersonController', controllerAs: 'saleinperson', reloadOnUrl: false })
+
             .when('/product-classific/:state/:id?', { template: require('./pages/prd/product-classification/product-classification.html'), controller: 'ProductClassificationController', controllerAs: 'productClassific', reloadOnUrl: false })
             .when('/product/:state/:id?', { template: require('./pages/prd/product/product.html'), controller: 'ProductController', controllerAs: 'product', reloadOnUrl: false })
-            .when('/stock/:state/:id?', { template: require('./pages/prd/stock/stock.html'), controller: 'StockController', controllerAs: 'stock', reloadOnUrl: false })
+            .when('/stock/:state/:id?', { template: require('./pages/prd/stock/main/stock.html'), controller: 'StockController', controllerAs: 'stock', reloadOnUrl: false })
 
             .when('/brand/:state/:id?', { template: require('./pages/pbl/brand/brand.html'), controller: 'BrandController', controllerAs: 'brand', reloadOnUrl: false })
-            //--------api-------//
+           //--------api-------//
 
 
             .when('/not-found', { template: require('./pages/not-found/not-found.html'), controller: 'NotFoundController', controllerAs: 'notFound', data: { title: 'صفحه مورد نظر یافت نشد' } })

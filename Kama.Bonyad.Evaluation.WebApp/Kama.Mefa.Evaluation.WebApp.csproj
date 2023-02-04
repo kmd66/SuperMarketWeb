@@ -436,14 +436,16 @@
     <Content Include="app\pages\pbl\brand\brand.controller.js" />
     <Content Include="app\pages\pbl\brand\brand.html" />
     <Content Include="app\pages\pbl\brand\brand.service.js" />
-    <Content Include="app\pages\prd\stock\directive\cartable\stock-cartable.directive.html" />
-    <Content Include="app\pages\prd\stock\directive\cartable\stock-cartable.directive.js" />
-    <Content Include="app\pages\prd\stock\directive\add\stock-add.directive.html" />
-    <Content Include="app\pages\prd\stock\directive\add\stock-add.directive.js" />
-    <Content Include="app\pages\prd\stock\directive\modify\stock-modify.directive.html" />
-    <Content Include="app\pages\prd\stock\directive\modify\stock-modify.directive.js" />
-    <Content Include="app\pages\prd\stock\stock.controller.js" />
-    <Content Include="app\pages\prd\stock\stock.html" />
+    <Content Include="app\pages\prd\stock\saleinperson\saleinperson.controller.js" />
+    <Content Include="app\pages\prd\stock\saleinperson\saleinperson.html" />
+    <Content Include="app\pages\prd\stock\main\directive\cartable\stock-cartable.directive.html" />
+    <Content Include="app\pages\prd\stock\main\directive\cartable\stock-cartable.directive.js" />
+    <Content Include="app\pages\prd\stock\main\directive\add\stock-add.directive.html" />
+    <Content Include="app\pages\prd\stock\main\directive\add\stock-add.directive.js" />
+    <Content Include="app\pages\prd\stock\main\directive\modify\stock-modify.directive.html" />
+    <Content Include="app\pages\prd\stock\main\directive\modify\stock-modify.directive.js" />
+    <Content Include="app\pages\prd\stock\main\stock.controller.js" />
+    <Content Include="app\pages\prd\stock\main\stock.html" />
     <Content Include="app\pages\prd\stock\stock.service.js" />
     <Content Include="app\pages\prd\product\directive\information\product-information.directive.html" />
     <Content Include="app\pages\prd\product\directive\information\product-information.directive.js" />
@@ -683,6 +685,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\assets\videos\" />
+    <Folder Include="app\pages\prd\stock\saleinperson\directive\" />
     <Folder Include="App_Data\" />
     <Folder Include="Files\" />
     <Folder Include="obj\Debug\" />

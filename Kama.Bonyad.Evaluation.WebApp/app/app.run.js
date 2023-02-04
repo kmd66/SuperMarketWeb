@@ -18,7 +18,7 @@
             {
                 name: 'requests', title: 'درخواست‌ها', icon: 'sticky-note', expand: true, stats: 1
                 , subMenus: [
-                    { route: 'announcement', title: '-' }
+                    { route: 'saleinperson', title: 'فروش حضوزی' }
                 ]
             }
             , {
