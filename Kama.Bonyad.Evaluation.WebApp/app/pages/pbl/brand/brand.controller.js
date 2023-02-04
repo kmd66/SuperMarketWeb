@@ -14,7 +14,6 @@
         brand.search = new ObjectService();
         brand.modify = new ObjectService();
 
-        brand.main.setParent = setParent
         brand.main.changeState = {
             add: add
             , edit: edit
@@ -37,7 +36,6 @@
                 }
             }).then(() => {
                 brand.cartable.grid.getlist(true);
-                setParent(true);
             });//.finally(loadingService.hide);
         }
         function add() {
@@ -63,12 +61,6 @@
         function cartable() {
             brand.main.state = 'cartable';
             $location.path(`brand/cartable`);
-        }
-        function setParent(b) {
-            productClassificationService.list({ FirstNode: true }).then((result) => {
-                brand.search.parentBrandDropdown.setItems(result);
-                brand.modify.parentBrandDropdown.setItems(result);
-            }).finally(loadingService.hide);
         }
         function update() {
             if (brand.modify.parentBrandDropdown && brand.modify.parentBrandDropdown.update)

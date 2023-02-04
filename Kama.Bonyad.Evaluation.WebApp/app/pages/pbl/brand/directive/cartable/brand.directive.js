@@ -28,8 +28,8 @@
             brand.cartable.grid = {
                 bindingObject: brand.cartable
                 , columns: [
-                    { name: 'Name', displayName: 'نام' }
-                    , { name: 'ParentName', displayName: 'والد' }
+                    { name: 'FaName', displayName: 'نام' }
+                    , { name: 'EnName', displayName: 'نام انگلیسی' }
                 ]
                 , initload: true
                 , pageSize: 100//globalService.get('userSettings').PageSize
@@ -38,18 +38,6 @@
                 , onAdd: brand.main.changeState.add
                 , onEdit: brand.main.changeState.edit
                 , deleteService: brandService.remove
-            };
-
-            brand.search.parentBrandDropdown = {
-                bindingObject: brand.search
-                , parameters: { ID: 'ParentID' }
-                , select2: true
-            };
-
-            brand.search.parentbrandDropdown = {
-                bindingObject: brand.search
-                , parameters: { GuID: 'ParentID' }
-                , select2: true
             };
 
         }
