@@ -14,7 +14,10 @@ $alertColor5: #6200d7;
     cursor: pointer;
     text-decoration: underline;
 }
-
+.disabled {
+    background-color: #eee;
+    padding-top: 3px;
+}
 .input-ltr {
     direction: ltr;
 }

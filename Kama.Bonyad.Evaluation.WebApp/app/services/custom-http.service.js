@@ -56,6 +56,15 @@
             Save: new RequestService('Information/Save'),
             List: new RequestService('Information/List'),
             Delete: new RequestService('Information/Delete'),
+            AddClassificationInformation: new RequestService('Information/AddClassificationInformation'),
+            ListClassificationInformation: new RequestService('Information/ListClassificationInformation'),
+            DeleteClassificationInformation: new RequestService('Information/DeleteClassificationInformation'),
+        };
+        httpService.Classification = {
+            Save: new RequestService('Classification/Save'),
+            Delete: new RequestService('Classification/Delete'),
+            Get: new RequestService('Classification/Get'),
+            List: new RequestService('Classification/List'),
         };
         httpService.Tag = {
             Save: new RequestService('Tag/Save'),

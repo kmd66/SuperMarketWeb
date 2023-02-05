@@ -1,0 +1,37 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span ng-show="classification.main.state === 'add'">
+                    <span ng-show="classification.modify.childrenModify == 'hide'">ایجاد دسته</span>
+                    <span ng-show="classification.modify.childrenModify != 'hide'">ایجاد زیر دسته</span>
+                </span>
+                <span ng-show="classification.main.state === 'edit'">
+                    <span ng-show="classification.modify.childrenModify == 'hide'">ویرایش دسته</span>
+                    <span ng-show="classification.modify.childrenModify != 'hide'">ویرایش زیر دسته</span>
+                </span>
+                <span ng-show="classification.main.state === 'cartable'">‌دسته‌ها</span>
+            </div>
+            <div class="panel-body">
+                <kama-classification-cartable main="classification.main"
+                                              cartable="classification.cartable"
+                                              search="classification.search"
+                                              ng-show="classification.main.state === 'cartable'"></kama-classification-cartable>
+
+                <kama-classification-modify main="classification.main"
+                                            modify="classification.modify"
+                                            cartable="classification.cartable"
+                                            children="classification.children"
+                                             ng-show="['add', 'edit'].indexOf(classification.main.state) !== -1 && classification.modify.childrenModify == 'hide'"></kama-classification-modify>
+
+                <kama-classification-modify2 main="classification.main"
+                                             modify="classification.modify"
+                                             cartable="classification.cartable"
+                                             children="classification.children"
+                                             ng-show="['add', 'edit'].indexOf(classification.main.state) !== -1 
+                                             && ['add', 'edit'].indexOf(classification.modify.childrenModify) !== -1"></kama-classification-modify2>
+
+            </div>
+        </div>
+    </div>
+</div>

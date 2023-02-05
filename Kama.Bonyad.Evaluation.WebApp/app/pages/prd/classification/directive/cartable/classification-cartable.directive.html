@@ -1,0 +1,47 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <!--error-->
+        <div class="row">
+            <div class="col-xs-12" id="request-errors">
+                <kama-error errors="cartable.model.errors"></kama-error>
+            </div>
+        </div>
+        <div class="well well-sm" style="padding: 9px 15px">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="cartable-action" ng-click="cartable.grid.getlist()"><span>به‌روز‌رسانی</span><i class="fa fa-refresh" aria-hidden="true"></i></div>
+                    <div class="cartable-action" ng-click="search.state = 'show'"><span>جستجو</span><i class="fa fa-search" aria-hidden="true"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default" ng-show="search.state === 'show'">
+            <div class="panel-heading">
+                جستجو
+                <button type="button" class="close" aria-hidden="true"
+                        ng-click="cartable.resetSearch(); cartable.grid.getlist();">
+                    ×
+                </button>
+            </div>
+            <div class="panel-body">
+                <form ng-submit="cartable.grid.pageIndex = 1; cartable.grid.getlist();">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                        <label>نام</label>
+                        <input class="form-control" ng-model="search.model.Name" />
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-6 col-md-3">
+                        <label>توضیح</label>
+                        <input class="form-control" ng-model="search.model.Comment" />
+                    </div>
+                    <div class="btn-container col-xs-12">
+                        <hr />
+                        <button type="submit" class="btn btn-cancel">جستجو</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!--grid-->
+        <kama-grid obj="cartable.grid"></kama-grid>
+    </div>
+</div>

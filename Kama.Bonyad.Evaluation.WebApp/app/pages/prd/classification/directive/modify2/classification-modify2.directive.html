@@ -1,0 +1,37 @@
+﻿<div class="form-group col-xs-12 col-sm-6 col-md-3">
+    <label class="required">نام</label>
+    <input class="form-control" ng-model="children.model.Name" />
+</div>
+
+<div class="form-group col-xs-12 col-sm-6 col-md-3" ng-show="modify.childrenModify === 'add'">
+    <label class="required">والد</label>
+    <kama-select obj="children.parentclassificationDropdown"></kama-select>
+</div>
+<div class="form-group col-xs-12 col-sm-6 col-md-3" ng-show="modify.childrenModify === 'edit' && children.model.ParentName">
+    <label class="required">والد</label>
+    <div class="form-control disabled">{{children.model.ParentName}}</div>
+</div>
+<!--button-->
+
+<div ng-show="modify.childrenModify === 'edit'">
+    <div class="col-xs-12"><hr /></div>
+    <div class="col-xs-12 btn-container" ng-show="!children.isInformation">
+        <button ng-click="children.getInformations()" class="btn btn-primary btn-min-width">نمایش مشخصات محصول</button>
+    </div>
+
+    <div class="form-group  col-xs-12 col-sm-6 col-md-4"
+         ng-show="children.isInformation && children.informations.length && children.informations.length > 0"
+         ng-repeat="item in children.informations">
+        <div class="btn"
+             ng-class="{'btn-primary': !item.selected , 'btn-danger': item.selected }"
+             style="width:100%"
+             ng-click="children.selectInformation(item)">{{item.Text}}</div>
+    </div>
+</div>
+
+<div class="col-xs-12 "><hr /></div>
+<div class="col-xs-12 btn-container">
+    <button ng-click="children.save()" class="btn btn-success btn-min-width">ثبت</button>
+    <button ng-click="children.save(true)" class="btn btn-info btn-min-width">ثبت و بازگشت</button>
+    <button ng-click="main.changeState.childrenModifyHide()" type="button" class="btn btn-cancel btn-min-width">بازگشت</button>
+</div>

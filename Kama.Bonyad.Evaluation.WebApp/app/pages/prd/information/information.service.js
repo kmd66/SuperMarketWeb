@@ -8,6 +8,9 @@
         let service = {
             save: save
             , list: list
+            , addClassificationInformation
+            , listClassificationInformation
+            , deleteClassificationInformation
         };
 
         return service;
@@ -17,6 +20,15 @@
         }
         function list(model) {
             return httpService.Information.List(model);
+        }
+        function addClassificationInformation(model) {
+            return httpService.Information.AddClassificationInformation(model);
+        }
+        function listClassificationInformation(model) {
+            return httpService.Information.ListClassificationInformation(model);
+        }
+        function deleteClassificationInformation(model) {
+            return httpService.Information.DeleteClassificationInformation(model);
         }
     }
 })();
