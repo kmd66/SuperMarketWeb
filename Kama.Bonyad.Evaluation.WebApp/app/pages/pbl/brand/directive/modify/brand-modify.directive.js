@@ -31,6 +31,8 @@
                 loadingService.show();
                 brandService.save(brand.modify.model).then((result) => {
                     brand.modify.model = result;
+                    return brand.modify.img.save(brand.modify.model.GuID);
+                }).then((result) => {
                     alertService.success('دسته بندی با موفقیت ثبت شد');
                     brand.main.changeState.cartable();
                     brand.cartable.grid.getlist(true);

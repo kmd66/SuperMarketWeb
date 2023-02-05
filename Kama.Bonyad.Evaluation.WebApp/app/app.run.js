@@ -33,7 +33,15 @@
             , {
                 name: 'basic-info', title: 'اطلاعات پایه', icon: 'list-ul'
                 , subMenus: [
-                    { route: 'brand/cartable', title: 'برند' }
+                    { route: 'announcement', title: '-' }
+                ]
+            }
+            , {
+                name: 'basic-settings', title: 'تعاریف اولیه و تنظیمات', icon: 'list-ul'
+                , subMenus: [
+                    { route: 'product-classific/cartable', title: 'دسته بندی کالا' }
+                    , { route: 'brand/cartable', title: 'برند' }
+                    , { route: 'information/cartable', title: 'مشخصات محصول' }
                 ]
             }
             , {

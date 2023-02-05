@@ -6,6 +6,7 @@
                 <kama-error errors="cartable.model.errors"></kama-error>
             </div>
         </div>
+
         <div class="well well-sm" style="padding: 9px 15px">
             <div class="row">
                 <div class="col-xs-12">
@@ -24,18 +25,15 @@
                 </button>
             </div>
             <div class="panel-body">
-                <form>
+                <form ng-submit="cartable.grid.pageIndex = 1; cartable.grid.getlist();">
                     <div class="form-group col-xs-12 col-sm-6 col-md-3">
                         <label>نام</label>
-                        <input class="form-control" ng-model="search.model.FaName" />
+                        <input class="form-control" ng-model="search.model.Text" />
                     </div>
-                    <div class="form-group col-xs-12 col-sm-6 col-md-3">
-                        <label>نام انگلیسی</label>
-                        <input class="form-control" ng-model="search.model.EnName" />
-                    </div>
+                    <!--button-->
                     <div class="btn-container col-xs-12">
                         <hr />
-                        <button type="button" class="btn btn-cancel" ng-click="cartable.resetSearch(); cartable.grid.getlist();">جستجو</button>
+                        <button type="submit" class="btn btn-cancel">جستجو</button>
                     </div>
                 </form>
             </div>

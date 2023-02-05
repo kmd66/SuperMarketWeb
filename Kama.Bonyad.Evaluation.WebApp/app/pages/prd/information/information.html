@@ -1,0 +1,22 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span ng-show="information.main.state === 'add'">ویرایش مشخصات محصول</span>
+                <span ng-show="information.main.state === 'cartable'">‌مشخصات محصول</span>
+            </div>
+            <div class="panel-body">
+                <kama-information-cartable main="information.main"
+                                     cartable="information.cartable"
+                                     search="information.search"
+                                     ng-show="information.main.state === 'cartable'"></kama-information-cartable>
+
+                <kama-information-add main="information.main"
+                                cartable="information.cartable"
+                                add="information.add"
+                                ng-show="information.main.state === 'add'"></kama-information-add>
+
+            </div>
+        </div>
+    </div>
+</div>

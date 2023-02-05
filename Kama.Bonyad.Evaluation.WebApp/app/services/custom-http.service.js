@@ -52,6 +52,11 @@
             Edit: new RequestService('Application/Edit'),
             List: new RequestService('Application/List'),
         };
+        httpService.Information = {
+            Save: new RequestService('Information/Save'),
+            List: new RequestService('Information/List'),
+            Delete: new RequestService('Information/Delete'),
+        };
         httpService.Tag = {
             Save: new RequestService('Tag/Save'),
             Delete: new RequestService('Tag/Delete'),

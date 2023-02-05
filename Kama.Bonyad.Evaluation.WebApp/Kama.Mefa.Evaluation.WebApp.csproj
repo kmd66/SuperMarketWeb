@@ -230,6 +230,7 @@
     <Compile Include="Controllers\Organization\PositionHistoryController.cs" />
     <Compile Include="Controllers\Organization\RoleController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
+    <Compile Include="Controllers\prd\InformationController.cs" />
     <Compile Include="Controllers\prd\TagController.cs" />
     <Compile Include="Controllers\prd\StockController.cs" />
     <Compile Include="Controllers\prd\ProductController.cs" />
@@ -436,6 +437,13 @@
     <Content Include="app\pages\pbl\brand\brand.controller.js" />
     <Content Include="app\pages\pbl\brand\brand.html" />
     <Content Include="app\pages\pbl\brand\brand.service.js" />
+    <Content Include="app\pages\prd\information\directive\add\information-add.directive.html" />
+    <Content Include="app\pages\prd\information\directive\add\information-add.directive.js" />
+    <Content Include="app\pages\prd\information\directive\cartable\information-cartable.directive.html" />
+    <Content Include="app\pages\prd\information\directive\cartable\information-cartable.directive.js" />
+    <Content Include="app\pages\prd\information\information.controller.js" />
+    <Content Include="app\pages\prd\information\information.html" />
+    <Content Include="app\pages\prd\information\information.service.js" />
     <Content Include="app\pages\prd\stock\saleinperson\saleinperson.controller.js" />
     <Content Include="app\pages\prd\stock\saleinperson\saleinperson.html" />
     <Content Include="app\pages\prd\stock\main\directive\cartable\stock-cartable.directive.html" />
