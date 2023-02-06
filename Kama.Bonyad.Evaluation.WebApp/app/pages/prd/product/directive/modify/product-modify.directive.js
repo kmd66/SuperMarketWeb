@@ -3,8 +3,8 @@
         .module('evaluation')
         .directive('kamaProductModify', kamaProductModify);
 
-    kamaProductModify.$inject = ['productService', 'loadingService', 'alertService', 'enumService', 'productClassificationService', 'brandService', '$q'];
-    function kamaProductModify(productService, loadingService, alertService, enumService, productClassificationService, brandService, $q) {
+    kamaProductModify.$inject = ['productService', 'loadingService', 'alertService', 'enumService', 'attachmentService', 'brandService', '$q'];
+    function kamaProductModify(productService, loadingService, alertService, enumService, attachmentService, brandService, $q) {
         let directive = {
             link: {
                 pre: preLink
@@ -25,10 +25,15 @@
 
             product.modify.save = save;
             product.modify.convetInformation = convetInformation;
+            product.modify.addImg = addImg;
+            product.modify.removeImg = removeImg;
+            product.modify.saveImgs = saveImgs;
             product.modify.img = {
-                Type: 2,
-                hideHead: true
+                title: 'تصویر شاخص',
+                Type: 2
             };
+
+            product.modify.imgs = [];
 
             product.modify.classificationDropdown = {
                 bindingObject: product.modify
@@ -50,6 +55,8 @@
                 productService.save(product.modify.model).then((result) => {
                     product.modify.model = result
                     return product.modify.img.save(product.modify.model.GuID);
+                }).then((result) => {
+                    return saveImgs();
                 }).then((result) => {
                     if (product.main.state == 'add' && !getCartable) {
                         product.main.changeState.edit(product.modify.model);
@@ -85,6 +92,56 @@
                                 product.modify.Informations[indexOf].Value = e[1];
                         }
                     });
+                }
+            }
+
+            function addImg() {
+                product.modify.imgs.push({
+                    Type: 4,
+                    hideHead: true,
+                    remove: removeImg
+                });
+            }
+
+            function saveImgs(parentID) {
+                return $q.resolve().then(() => {
+                    var list = [];
+                    product.modify.imgs.map((x) => {
+                        if (x.uploading) {
+                            x.bindingObject.ParentID = product.modify.model.GuID;
+                            x.bindingObject.Type = x.Type;
+                            list.push(x.bindingObject);
+                        }
+                    });
+                    if (list.length > 0)
+                        return attachmentService.saveList(list);
+                });
+            }
+
+            function removeImg(b, item) {
+                var index = product.modify.imgs.findIndex(i => i.id == item.id);
+
+                if (index > -1) {
+                    var _img = product.modify.imgs[index];
+                    if (_img.uploading) {
+                        _img.reset();
+                    }
+                    else {
+                        if (b) {
+                            $(`#remove-modal${_img.id}`).modal('hide');
+                            loadingService.show();
+                            return attachmentService.remove(_img.bindingObject).then(() => {
+                                _img.reset();
+                                alertService.success('فایل حذف شد');
+                            }).catch((error) => {
+                                _img.uploading = false; //**state
+                                alertService.error(error);
+                            }).finally(loadingService.hide);
+                        }
+                        else
+                            $(`#remove-modal${_img.id}`).modal('show');
+                    }
+                    return $q.resolve()
                 }
             }
 

@@ -39,7 +39,8 @@
             , {
                 name: 'basic-settings', title: 'تعاریف اولیه و تنظیمات', icon: 'list-ul'
                 , subMenus: [
-                    { route: 'classific/cartable', title: 'دسته بندی کالا' }
+                    { route: 'product/cartable', title: 'محصول' }
+                    , { route: 'classific/cartable', title: 'دسته بندی کالا' }
                     , { route: 'brand/cartable', title: 'برند' }
                     , { route: 'information/cartable', title: 'مشخصات محصول' }
                 ]

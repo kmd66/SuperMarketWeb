@@ -23,7 +23,8 @@
             scope.obj.select = select;
             scope.obj.upload = upload;
             scope.obj.save = save;
-            scope.obj.remove = remove;
+            if (!scope.obj.remove)
+                scope.obj.remove = remove;
             scope.obj.show = show;
             scope.obj.reset = reset;
             scope.obj.changeSelect = changeSelect;
@@ -71,7 +72,7 @@
 
                 $(`#file${scope.obj.id}`).click();
             }
-            function remove(b) {
+            function remove(b, item) {
                 if (scope.obj.uploading) {
                     reset();
                     //return $q.reject();

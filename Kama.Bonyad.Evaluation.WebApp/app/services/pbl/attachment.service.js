@@ -10,6 +10,7 @@
             , list: list
             , remove: remove
             , save: save
+            , saveList: saveList
             , upload: upload
         };
 
@@ -26,6 +27,9 @@
         }
         function save(model) {
             return httpService.Attachment.Save(model);
+        }
+        function saveList(model) {
+            return httpService.Attachment.SaveList(model);
         }
         function upload(fileData) {
             return $http.post(

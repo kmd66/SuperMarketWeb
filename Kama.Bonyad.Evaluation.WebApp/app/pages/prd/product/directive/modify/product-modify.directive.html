@@ -40,7 +40,7 @@
 
 
 
-<div ng-show="modify.model.ID">
+<div class="col-xs-12" ng-show="modify.model.ID">
     <div class="col-xs-12" style="margin-top:10px">
         <ul class="nav nav-tabs">
             <li ng-class="{'active': modify.tabNumber == 1}">
@@ -56,7 +56,16 @@
     </div>
 
     <div class="tab-pane" ng-show="modify.tabNumber == 1">
-        <img-attachment obj="modify.img"></img-attachment>
+
+        <img-attachment class="col-xs-12" obj="modify.img" style="margin-top:10px"></img-attachment>
+
+        <div class="form-group col-xs-12">
+            <div class="separator">تصاویر</div>
+        </div>
+        <div class="col-xs-12" ng-repeat="item in modify.imgs">
+            <img-attachment  class="col-xs-12" obj="item"></img-attachment>
+        </div>
+        <button ng-click="modify.addImg()" class="btn btn-info btn-min-width">اقزودن تصویر</button>
     </div>
 
     <kama-product-tag main="main"

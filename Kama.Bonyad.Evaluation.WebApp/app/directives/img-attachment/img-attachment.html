@@ -22,7 +22,7 @@
                     <div><img src="{{obj.bindingObject.Url}}" height="70px" width="70px" /></div>
                     <div style="margin-top: 5px">
                         <span class="bindingObjectText" ng-click="obj.show()"> [دانلود] </span>
-                        <span class="bindingObjectText" ng-click="obj.remove()" style="color:red"> [حذف] </span>
+                        <span class="bindingObjectText" ng-click="obj.remove(false, obj)" style="color:red"> [حذف] </span>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
             </div>
 
             <div class="modal-footer btn-container">
-                <button ng-click="obj.remove(true)" class="btn btn-danger btn-min-width">
+                <button ng-click="obj.remove(true, obj)" class="btn btn-danger btn-min-width">
                     تایید
                 </button>
                 <button type="button" class="btn btn-cancel btn-min-width" data-dismiss="modal">

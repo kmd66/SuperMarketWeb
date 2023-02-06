@@ -58,7 +58,21 @@
             }).then((result) => {
                 product.modify.Informations = result || [];
                 product.modify.convetInformation();
-                product.modify.img.bindingObject = product.modify.model.Attachment;
+                var b = false;
+                product.modify.model.Attachments.map((x) => {
+                    if (x.Type == 4)
+                        product.modify.imgs.push({
+                            Type: 4,
+                            hideHead: true,
+                            remove: product.modify.removeImg,
+                            bindingObject: x
+                        });
+                    if (x.Type == 2 && !b) {
+                        b = true;
+                        product.modify.img.bindingObject = x;
+                    }
+                });
+                //product.modify.img.bindingObject = product.modify.model.Attachments.find((x) => {x.Type ==2 });
                 product.main.state = 'edit';
                 $location.path(`product/edit/${product.modify.model.GuID}`);
                 update();
@@ -90,6 +104,7 @@
             product.modify.model = {};
             product.tag.model = {};
             product.modify.Information = {};
+            product.modify.imgs = [];
         }
         function update() {
             product.modify.update();

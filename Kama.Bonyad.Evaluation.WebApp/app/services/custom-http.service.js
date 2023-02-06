@@ -94,6 +94,7 @@
         httpService.Attachment = {
             Upload: new RequestService('Attachment/Upload'),
             Save: new RequestService('Attachment/Save'),
+            SaveList: new RequestService('Attachment/SaveList'),
             Remove: new RequestService('Attachment/Remove'),
             Get: new RequestService('Attachment/Get'),
             List: new RequestService('Attachment/List'),

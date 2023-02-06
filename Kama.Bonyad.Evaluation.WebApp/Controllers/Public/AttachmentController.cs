@@ -2,6 +2,7 @@
 using Kama.Bonyad.Evaluation.Core.Model;
 using Kama.Bonyad.Evaluation.WebApp.Tools;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -96,6 +97,14 @@ namespace Kama.Bonyad.Evaluation.WebApp.Controllers
             //    result = await _attachmentService.Edit(model);
 
             return Json(result);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> SaveList(List<Attachment> model)
+        {
+            foreach (var m in model)
+               await Save(m);
+            return Json(AppCore.Result.Successful());
         }
 
         [HttpPost]
