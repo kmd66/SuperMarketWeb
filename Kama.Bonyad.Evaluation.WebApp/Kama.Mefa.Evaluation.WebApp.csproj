@@ -454,6 +454,17 @@
     <Content Include="app\pages\prd\classification\directive\cartable\classification.directive.js" />
     <Content Include="app\pages\prd\classification\directive\modify\classification-modify.directive.html" />
     <Content Include="app\pages\prd\classification\directive\modify\classification-modify.directive.js" />
+    <Content Include="app\pages\prd\product2\directive\cartable\product-cartable.directive.html" />
+    <Content Include="app\pages\prd\product2\directive\cartable\product-cartable.directive.js" />
+    <Content Include="app\pages\prd\product2\directive\information\product-information.directive.html" />
+    <Content Include="app\pages\prd\product2\directive\information\product-information.directive.js" />
+    <Content Include="app\pages\prd\product2\directive\modify\product-modify.directive.html" />
+    <Content Include="app\pages\prd\product2\directive\modify\product-modify.directive.js" />
+    <Content Include="app\pages\prd\product2\directive\Tag\product-tag.directive.html" />
+    <Content Include="app\pages\prd\product2\directive\Tag\product-tag.directive.js" />
+    <Content Include="app\pages\prd\product2\product.controller.js" />
+    <Content Include="app\pages\prd\product2\product.html" />
+    <Content Include="app\pages\prd\product2\product.service.js" />
     <Content Include="app\pages\prd\stock\saleinperson\saleinperson.controller.js" />
     <Content Include="app\pages\prd\stock\saleinperson\saleinperson.html" />
     <Content Include="app\pages\prd\stock\main\directive\cartable\stock-cartable.directive.html" />
