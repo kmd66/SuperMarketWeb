@@ -3,8 +3,8 @@
         .module('evaluation')
         .controller('ClassificationController', ClassificationController);
 
-    ClassificationController.$inject = ['ObjectService', 'classificationService', '$timeout', '$routeParams', '$location', 'loadingService', 'alertService', '$q', 'attachmentService'];
-    function ClassificationController(ObjectService, classificationService, $timeout, $routeParams, $location, loadingService, alertService, $q, attachmentService) {
+    ClassificationController.$inject = ['ObjectService', 'classificationService', '$timeout', '$routeParams', '$location', 'loadingService', 'alertService', '$q'];
+    function ClassificationController(ObjectService, classificationService, $timeout, $routeParams, $location, loadingService, alertService, $q) {
 
 
         let classification = this;

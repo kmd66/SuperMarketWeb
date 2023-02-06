@@ -3,8 +3,8 @@
         .module('evaluation')
         .controller('BrandController', BrandController);
 
-    BrandController.$inject = ['ObjectService', 'brandService', 'productClassificationService', '$timeout', '$routeParams', '$location', 'loadingService', 'alertService', '$q'];
-    function BrandController(ObjectService, brandService, productClassificationService, $timeout, $routeParams, $location, loadingService, alertService, $q) {
+    BrandController.$inject = ['ObjectService', 'brandService', '$timeout', '$routeParams', '$location', 'loadingService', 'alertService', '$q'];
+    function BrandController(ObjectService, brandService,  $timeout, $routeParams, $location, loadingService, alertService, $q) {
 
 
         let brand = this;

@@ -24,68 +24,68 @@
             let product = scope;
 
             product.modify.save = save;
+            product.modify.convetInformation = convetInformation;
             product.modify.img = {
                 Type: 2,
                 hideHead: true
             };
-            product.modify.unitOfMeasureTypeDropDown = {
-                items: enumService.UnitOfMeasureType
-                , bindingObject: product.modify
-                , parameters: { ID: 'UnitOfMeasure', Name: 'UnitOfMeasureName' }
-            };
 
-            product.modify.filterParentProductDropdown = {
+            product.modify.classificationDropdown = {
                 bindingObject: product.modify
-                , parameters: { GuID: 'FilterParentID', ID: 'FilterParentIntID' }
+                , parameters: { ID: 'ClassificationID' }
                 , select2: true
-                , onChange: (selected, props) => {
-                    if (!props.isEmpty) {
-                        loadingService.show();
-                        return $q.resolve().then(() => {
-                            return product.modify.parentProductDropdown.getlist();
-                        }).then(() => {
-                            return product.modify.berandDropdown.getlist();
-                        }).finally(loadingService.hide);
-                    }
-                }
             };
 
-            product.modify.parentProductDropdown = {
+            product.modify.brandDropdown = {
                 bindingObject: product.modify
-                , parameters: { ID: 'ParentID' }
-                , select2: true
-                , options: () => {
-                    if (product.modify.model.FilterParentID)
-                        return { ParentID: product.modify.model.FilterParentID }
-                    else
-                        return { LastNode: true }
-                }
-                , listService: productClassificationService.list
-            };
-
-            product.modify.berandDropdown = {
-                bindingObject: product.modify
+                , displayName:['FaName']
                 , parameters: { ID: 'BrandID' }
                 , select2: true
-                , listService: () => {
-                    return brandService.list({ ParentID: product.modify.model.FilterParentIntID1 });
-                }
             };
 
             function save(getCartable) {
                 loadingService.show();
-                product.modify.model.Information = JSON.stringify(product.modify.Information);
+                if (product.main.state == 'edit')
+                    addInformation();
                 productService.save(product.modify.model).then((result) => {
                     product.modify.model = result
                     return product.modify.img.save(product.modify.model.GuID);
                 }).then((result) => {
+                    if (product.main.state == 'add' && !getCartable) {
+                        product.main.changeState.edit(product.modify.model);
+                    }
                     alertService.success('جنس با موفقیت ثبت شد');
                     if (getCartable) {
                         product.main.changeState.cartable();
-                        return product.cartable.grid.getlist(false);
                     }
+                    return product.cartable.grid.getlist(false);
                 }).catch(alertService.error).finally(loadingService.hide);
 
+            }
+
+            function addInformation() {
+                product.modify.model.Information = JSON.stringify(product.modify.Informations);
+                product.modify.model.Information = '{';
+                product.modify.Informations.map((x) => {
+                    if (x.Value)
+                        product.modify.model.Information += `"${x.Text}":"${x.Value}",`;
+                });
+                product.modify.model.Information += '}';
+            }
+
+            function convetInformation() {
+                var information = product.modify.model.Information.replaceAll("'", "").replaceAll('"', '').replace('{', '').replace('}', '');
+                if (information.length > 0) {
+                    var split = information.split(',');
+                    split.map((x) => {
+                        if (x.length > 0) {
+                            var e = x.split(':');
+                            var indexOf = product.modify.Informations.findIndex(i => i.Text == e[0]);
+                            if (indexOf > -1)
+                                product.modify.Informations[indexOf].Value = e[1];
+                        }
+                    });
+                }
             }
 
         }

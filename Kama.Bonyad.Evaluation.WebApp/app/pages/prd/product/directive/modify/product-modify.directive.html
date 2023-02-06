@@ -1,72 +1,45 @@
-﻿<div ng-show="modify.model.ID">
+﻿
+<div class="form-group col-xs-12">
+    <div class="separator">برند و دسته بندی</div>
+</div>
+<div ng-show="modify.model.ID">
     <div class="form-group col-xs-12 col-sm-6 col-md-3">
-        <label>والد</label>
-        <input class="form-control" ng-model="modify.model.ClassificationName" disabled />
+        <label>دسته</label>
+        <div class="form-control disabled">{{modify.model.ClassificationName}}</div>
     </div>
     <div class="form-group col-xs-12 col-sm-6 col-md-3">
         <label>برند</label>
-        <input class="form-control" ng-model="modify.model.BrandName" disabled />
+        <div class="form-control disabled">{{modify.model.BrandFaName}}</div>
     </div>
-    <div class="form-group col-xs-12"></div>
+
 </div>
 
 <div ng-show="!modify.model.ID">
-    <div class="form-group col-xs-12"></div>
-
     <div class="form-group col-xs-12 col-sm-6 col-md-3">
-        <label>فیلتر دسته بندی</label>
-        <kama-select obj="modify.filterParentProductDropdown" style="display:block"></kama-select>
-    </div>
-    <div class="form-group col-xs-12 col-sm-6 col-md-3">
-        <label class="required">والد</label>
-        <kama-select obj="modify.parentProductDropdown" style="display:block"></kama-select>
+        <label class="required">دسته</label>
+        <kama-select obj="modify.classificationDropdown" style="display:block"></kama-select>
     </div>
     <div class="form-group col-xs-12 col-sm-6 col-md-3">
         <label class="required">برند</label>
-        <kama-select obj="modify.berandDropdown" style="display:block"></kama-select>
+        <kama-select obj="modify.brandDropdown" style="display:block"></kama-select>
     </div>
+</div>
 
-    <div class="form-group col-xs-12"></div>
+<div class="form-group col-xs-12">
+    <div class="separator">نام محصول</div>
 </div>
 
 <div class="form-group col-xs-12 col-sm-6 col-md-3">
     <label class="required">نام</label>
-    <input class="form-control" ng-model="modify.model.Name" />
+    <input class="form-control" ng-model="modify.model.FaName" />
 </div>
-
 <div class="form-group col-xs-12 col-sm-6 col-md-3">
-    <label class="required">واحد اندازه گیری</label>
-    <kama-select obj="modify.unitOfMeasureTypeDropDown"></kama-select>
+    <label class="required">نام انگلیسی</label>
+    <input class="form-control" ng-model="modify.model.EnName" />
 </div>
 
-<div class="form-group col-xs-12">
-    <div class="form-group col-xs-12 col-sm-6 col-md-3">
-        <label>حداقل موجودی برای هشدار</label>
-        <input class="form-control" kama-prevent="letter" ng-model="modify.model.MinimumToAlert" />
-    </div>
-    <div class="form-group col-xs-12 col-sm-6 col-md-3">
-        <label>هشدار انقضا (روز)</label>
-        <input class="form-control" kama-prevent="letter" ng-model="modify.model.ExpiredToAlert" />
-    </div>
-</div>
 
-<div class="form-group col-xs-12"></div>
-<div class="form-group col-xs-12 col-sm-6 col-md-3">
-    <label class="required">قیمت</label>
-    <input class="form-control" kama-prevent="letter" ng-model="modify.model.Price" />
-</div>
 
-<div class="form-group col-xs-12 col-sm-6 col-md-3">
-    <label>تخفیف</label>
-    <input class="form-control" kama-prevent="letter" ng-model="modify.model.Discount" />
-</div>
-
-<div class="form-group col-xs-12">
-    <label class="required">توضیح</label>
-    <textarea class="form-control"
-              rows="4"
-              ng-model="modify.model.Comment"></textarea>
-</div>
 <div ng-show="modify.model.ID">
     <div class="col-xs-12" style="margin-top:10px">
         <ul class="nav nav-tabs">

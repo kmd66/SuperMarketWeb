@@ -18,6 +18,28 @@ $alertColor5: #6200d7;
     background-color: #eee;
     padding-top: 3px;
 }
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #818181;
+}
+
+.separator::before,
+.separator::after {
+    content: '';
+    margin: 10px 5px;
+    flex: 1;
+    border-bottom: 1px solid #eee;
+}
+
+.separator:not(:empty)::before {
+    margin-right: .25em;
+}
+
+.separator:not(:empty)::after {
+    margin-left: .25em;
+}
 .input-ltr {
     direction: ltr;
 }

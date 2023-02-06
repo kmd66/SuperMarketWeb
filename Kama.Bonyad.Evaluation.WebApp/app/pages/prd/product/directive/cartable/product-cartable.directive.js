@@ -3,8 +3,8 @@
         .module('evaluation')
         .directive('kamaProductCartable', kamaProductCartable);
 
-    kamaProductCartable.$inject = ['globalService', 'productClassificationService', 'productService'];
-    function kamaProductCartable(globalService, productClassificationService, productService) {
+    kamaProductCartable.$inject = ['globalService', 'productService'];
+    function kamaProductCartable(globalService, productService) {
         let directive = {
             link: {
                 pre: preLink
@@ -29,9 +29,10 @@
             product.cartable.grid = {
                 bindingObject: product.cartable
                 , columns: [
-                    { name: 'Name', displayName: 'نام' }
+                    { name: 'FaName', displayName: 'نام' }
+                    , { name: 'EnName', displayName: 'نام انگلیسی' }
                     , { name: 'ClassificationName', displayName: 'نام دسته' }
-                    , { name: 'Comment', displayName: 'توضیح' }
+                    , { name: 'BrandFaName', displayName: 'نام برند' }
                 ]
                 , initload: false
                 , pageSize: 100//globalService.get('userSettings').PageSize
@@ -42,17 +43,22 @@
                 , deleteService: productService.remove
             };
 
-            product.search.parentProductDropdown = {
+            product.search.classificationDropdown = {
                 bindingObject: product.search
-                , parameters: { ID: 'ParentID' }
+                , parameters: { ID: 'ClassificationID' }
                 , select2: true
-                //, initLoad: true
-                //, listService: productService.list
+            };
+
+            product.search.brandDropdown = {
+                bindingObject: product.search
+                , displayName: ['FaName']
+                , parameters: { ID: 'BrandID' }
+                , select2: true
             };
 
             function resetSearch() {
-                product.search.model.StartPrice = 0;
-                product.search.model.EndPrice = 0;
+                product.search.model = {};
+                product.search.update();
                 product.search.pageIndex = 1;
                 product.search.state = 'hide';
             }
