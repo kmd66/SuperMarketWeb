@@ -700,6 +700,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="sitemap.xml" />
+    <Content Include="موارد توسعه.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
