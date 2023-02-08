@@ -1,15 +1,15 @@
 ﻿(() => {
     angular
         .module('evaluation')
-        .directive('kamaProductTag', kamaProductTag);
+        .directive('kamaItemTag', kamaItemTag);
 
-    kamaProductTag.$inject = ['tagService', 'alertService','loadingService'];
-    function kamaProductTag(tagService, alertService, loadingService) {
+    kamaItemTag.$inject = ['tagService', 'alertService','loadingService'];
+    function kamaItemTag(tagService, alertService, loadingService) {
         let directive = {
             link: {
                 pre: preLink
             }
-            , template: require('./product-tag.directive.html')
+            , template: require('./item-tag.directive.html')
             , restrict: 'E'
             , scope: {
                 main: '=main'
@@ -21,40 +21,40 @@
         return directive;
 
         function preLink(scope, element, attrs) {
-            let product = scope;
+            let item = scope;
 
-            product.tag.save = save;
+            item.tag.save = save;
 
-            product.tag.editModel = {};
+            item.tag.editModel = {};
 
-            product.tag.gridTag = {
-                bindingObject: product.tag
+            item.tag.grid = {
+                bindingObject: item.tag
                 , columns: [
                     { name: 'TagName', displayName: 'نام' }
                 ]
                 , initload: false
                 , hideFooter: true
                 , pageSize: 100//globalService.get('userSettings').PageSize
-                , options: () => { return { ProductID: product.modify.model.ID }; }
+                , options: () => { return { ItemID: item.modify.model.ID }; }
                 , listService: tagService.list
                 , onAdd: (e) => {
-                    product.tag.editModel = {};
+                    item.tag.editModel = {};
                     $(`#tag-modal`).modal('show');
                 }
                 , onEdit: (e) => {
 
                     alertService.error('اجازه انجام این کار وجود ندارد');
-                    //product.tag.editModel = e;
+                    //item.tag.editModel = e;
                     //$(`#tag-modal`).modal('show');
                 }
                 , deleteService: (e) => {
-                    product.tag.editModel = e;
+                    item.tag.editModel = e;
                     return remove();
                 }
             };
             function save() {
-                tagService.save({ ProductID: product.modify.model.ID, TagName: product.tag.editModel.TagName }).then((result) => {
-                    return product.tag.gridTag.getlist(false);
+                tagService.save({ ItemID: item.modify.model.ID, TagName: item.tag.editModel.TagName }).then((result) => {
+                    return item.tag.grid.getlist(false);
                 }).then(() => {
                     alertService.success('برچسب با موفقیت ثبت شد');
                 }).catch(alertService.error).finally(() => {
@@ -63,8 +63,8 @@
                 });
             }
             function remove() {
-                return tagService.remove({ ProductID: product.modify.model.ID, TagID: product.tag.editModel.TagID }).then(() => {
-                    return product.tag.gridTag.getlist(false);
+                return tagService.remove({ ItemID: item.modify.model.ID, TagID: item.tag.editModel.TagID }).then(() => {
+                    return item.tag.grid.getlist(false);
                 });
             }
 

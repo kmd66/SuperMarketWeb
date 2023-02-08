@@ -1,15 +1,15 @@
 ﻿(() => {
     angular
         .module('evaluation')
-        .directive('kamaProductCartable', kamaProductCartable);
+        .directive('kamaItemCartable', kamaItemCartable);
 
-    kamaProductCartable.$inject = ['globalService', 'productService'];
-    function kamaProductCartable(globalService, productService) {
+    kamaItemCartable.$inject = ['globalService', 'itemService'];
+    function kamaItemCartable(globalService, itemService) {
         let directive = {
             link: {
                 pre: preLink
             }
-            , template: require('./product-cartable.directive.html')
+            , template: require('./item-cartable.directive.html')
             , restrict: 'E'
             , scope: {
                 main: '=main'
@@ -21,13 +21,13 @@
         return directive;
 
         function preLink(scope, element, attrs) {
-            let product = scope;
+            let item = scope;
 
-            product.cartable.resetSearch = resetSearch;
+            item.cartable.resetSearch = resetSearch;
             resetSearch();
 
-            product.cartable.grid = {
-                bindingObject: product.cartable
+            item.cartable.grid = {
+                bindingObject: item.cartable
                 , columns: [
                     { name: 'FaName', displayName: 'نام' }
                     , { name: 'EnName', displayName: 'نام انگلیسی' }
@@ -36,31 +36,31 @@
                 ]
                 , initload: false
                 , pageSize: 100//globalService.get('userSettings').PageSize
-                , options: () => { return product.search.model; }
-                , listService: productService.list
-                , onAdd: product.main.changeState.add
-                , onEdit: product.main.changeState.edit
-                , deleteService: productService.remove
+                , options: () => { return item.search.model; }
+                , listService: itemService.list
+                , onAdd: item.main.changeState.add
+                , onEdit: item.main.changeState.edit
+                , deleteService: itemService.remove
             };
 
-            product.search.classificationDropdown = {
-                bindingObject: product.search
+            item.search.classificationDropdown = {
+                bindingObject: item.search
                 , parameters: { ID: 'ClassificationID' }
                 , select2: true
             };
 
-            product.search.brandDropdown = {
-                bindingObject: product.search
+            item.search.brandDropdown = {
+                bindingObject: item.search
                 , displayName: ['FaName']
                 , parameters: { ID: 'BrandID' }
                 , select2: true
             };
 
             function resetSearch() {
-                product.search.model = {};
-                product.search.update();
-                product.search.pageIndex = 1;
-                product.search.state = 'hide';
+                item.search.model = {};
+                item.search.update();
+                item.search.pageIndex = 1;
+                item.search.state = 'hide';
             }
 
         }

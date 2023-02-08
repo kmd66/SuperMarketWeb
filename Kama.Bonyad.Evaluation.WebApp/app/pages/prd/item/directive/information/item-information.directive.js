@@ -1,15 +1,15 @@
 ﻿(() => {
     angular
         .module('evaluation')
-        .directive('kamaProductInformation', kamaProductInformation);
+        .directive('kamaItemInformation', kamaItemInformation);
 
-    kamaProductInformation.$inject = [];
-    function kamaProductInformation() {
+    kamaItemInformation.$inject = [];
+    function kamaItemInformation() {
         let directive = {
             link: {
                 pre: preLink
             }
-            , template: require('./product-information.directive.html')
+            , template: require('./item-information.directive.html')
             , restrict: 'E'
             , scope: {
                 main: '=main'

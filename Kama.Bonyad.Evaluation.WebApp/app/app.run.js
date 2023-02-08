@@ -22,7 +22,7 @@
                 ]
             }
             , {
-                name: 'store', title: 'انبار', icon: 'institution'
+                name: 'store', title: 'انبارها', icon: 'institution'
                 , subMenus: [
                     { route: 'stock/cartable', title: 'موجودی' }
                     , { route: 'product/cartable', title: 'اجناس' }
@@ -39,7 +39,7 @@
             , {
                 name: 'basic-settings', title: 'تعاریف اولیه و تنظیمات', icon: 'list-ul'
                 , subMenus: [
-                    { route: 'product/cartable', title: 'محصول' }
+                    { route: 'item/cartable', title: 'آیتم محصول' }
                     , { route: 'classific/cartable', title: 'دسته بندی کالا' }
                     , { route: 'brand/cartable', title: 'برند' }
                     , { route: 'information/cartable', title: 'مشخصات محصول' }

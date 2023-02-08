@@ -79,11 +79,11 @@
             Delete: new RequestService('Stock/Delete'),
             ChangeState: new RequestService('Stock/ChangeState'),
         };
-        httpService.Product = {
-            Save: new RequestService('Product/Save'),
-            Delete: new RequestService('Product/Delete'),
-            Get: new RequestService('Product/Get'),
-            List: new RequestService('Product/List'),
+        httpService.Item = {
+            Save: new RequestService('Item/Save'),
+            Delete: new RequestService('Item/Delete'),
+            Get: new RequestService('Item/Get'),
+            List: new RequestService('Item/List'),
         };
         httpService.ProductClassification = {
             Save: new RequestService('ProductClassification/Save'),

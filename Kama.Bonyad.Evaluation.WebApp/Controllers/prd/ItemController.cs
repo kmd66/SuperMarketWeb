@@ -8,17 +8,17 @@ using System.Web.Mvc;
 
 namespace Kama.Bonyad.Evaluation.WebApp.Controllers
 {
-    public class ProductController : BaseController
+    public class ItemController : BaseController
     {
-        public ProductController(IProductService service)
+        public ItemController(IItemService service)
         {
             _service = service;
         }
 
-        readonly IProductService _service;
+        readonly IItemService _service;
 
         [HttpPost]
-        public async Task<JsonResult> Save(Product model)
+        public async Task<JsonResult> Save(Item model)
         {
             dynamic result;
             if (model.GuID == 
@@ -30,7 +30,7 @@ namespace Kama.Bonyad.Evaluation.WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> Delete(Product model)
+        public async Task<JsonResult> Delete(Item model)
         {
             return Json(Result.Failure(message: "اجازه انجام این کار وجود ندارد"));
             var result = await _service.Delete(model);
@@ -38,14 +38,14 @@ namespace Kama.Bonyad.Evaluation.WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> Get(Product model)
+        public async Task<JsonResult> Get(Item model)
         {
             var result = await _service.Get(model);
             return Json(result);
         }
 
         [HttpPost]
-        public async Task<JsonResult> List(ProductVM model)
+        public async Task<JsonResult> List(ItemVM model)
         {
             var result = await _service.List(model);
             return Json(result);

@@ -1,10 +1,10 @@
 ﻿(() => {
     angular
         .module('evaluation')
-        .factory('productService', productService);
+        .factory('itemService', itemService);
 
-    productService.$inject = ['httpService'];
-    function productService(httpService) {
+    itemService.$inject = ['httpService'];
+    function itemService(httpService) {
         let service = {
             save: save
             , remove: remove
@@ -15,16 +15,16 @@
         return service;
 
         function save(model) {
-            return httpService.Product.Save(model);
+            return httpService.Item.Save(model);
         }
         function remove (model) {
-            return httpService.Product.Delete(model);
+            return httpService.Item.Delete(model);
         }
         function get (model) {
-            return httpService.Product.Get(model);
+            return httpService.Item.Get(model);
         }
         function list (model) {
-            return httpService.Product.List(model);
+            return httpService.Item.List(model);
         }
     }
 })();
