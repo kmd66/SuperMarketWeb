@@ -1,0 +1,27 @@
+﻿<div class="row">
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <span ng-show="depo.main.state === 'add'">افزودن محصول</span>
+                <span ng-show="depo.main.state === 'viwe'">مشاهده جزییات</span>
+                <span ng-show="depo.main.state === 'cartable'">انبار</span>
+            </div>
+            <div class="panel-body">
+                <kama-depo-cartable main="depo.main"
+                                    cartable="depo.cartable"
+                                    search="depo.search"
+                                    ng-show="depo.main.state === 'cartable'"></kama-depo-cartable>
+
+                <kama-depo-add main="depo.main"
+                                    cartable="depo.cartable"
+                                    add="depo.add"
+                                    ng-show="depo.main.state === 'add'"></kama-depo-add>
+                <!--<kama-depo-modify main="depo.main"
+                                        modify="depo.modify"
+                                        cartable="depo.cartable"
+                                        ng-show="['add', 'edit'].indexOf(depo.main.state) !== -1"></kama-depo-modify>-->
+
+            </div>
+        </div>
+    </div>
+</div>

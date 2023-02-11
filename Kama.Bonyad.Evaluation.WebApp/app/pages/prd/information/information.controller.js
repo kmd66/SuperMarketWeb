@@ -3,8 +3,8 @@
         .module('evaluation')
         .controller('InformationController', InformationController);
 
-    InformationController.$inject = ['ObjectService', 'informationService', 'productClassificationService', '$timeout', '$routeParams', '$location', 'loadingService', 'alertService', '$q', 'productService'];
-    function InformationController(ObjectService, informationService, productClassificationService, $timeout, $routeParams, $location, loadingService, alertService, $q, productService) {
+    InformationController.$inject = ['ObjectService','$timeout', '$routeParams', '$location', 'loadingService', '$q'];
+    function InformationController(ObjectService, $timeout, $routeParams, $location, loadingService, $q) {
 
         let information = this;
 

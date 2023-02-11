@@ -52,6 +52,13 @@
             Edit: new RequestService('Application/Edit'),
             List: new RequestService('Application/List'),
         };
+        httpService.Depo = {
+            EnterStorage: new RequestService('Depo/EnterStorage'),
+            Delete: new RequestService('Depo/Delete'),
+            Get: new RequestService('Depo/Get'),
+            List: new RequestService('Depo/List'),
+            DepoIndexList: new RequestService('Depo/DepoIndexList'),
+        };
         httpService.Information = {
             Save: new RequestService('Information/Save'),
             List: new RequestService('Information/List'),
