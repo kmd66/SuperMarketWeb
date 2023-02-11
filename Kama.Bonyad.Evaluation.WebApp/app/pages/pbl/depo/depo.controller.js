@@ -33,7 +33,7 @@
                     case 'add':
                         return add({ ItemID: $routeParams.id });
                     case 'viwe':
-                        return viwe({ ID: $routeParams.id });
+                        return viwe({ ItemID: $routeParams.id });
                 }
             }).then(() => {
                 setParent();
@@ -55,12 +55,12 @@
         }
         function viwe(selected) {
             loadingService.show();
-            return depoService.get({ GuID: selected.ID }).then((result) => {
-                depo.viwe.model = result;
-                update();
+            return depoService.depoStorageList({ ItemID: selected.ItemID }).then((result) => {
+                depo.viwe.model = result[0];
                 depo.main.state = 'viwe';
-                $location.path(`depo/edit/${depo.add.model.GuID}`);
+                $location.path(`depo/viwe/${depo.add.model.ItemID}`);
             }).catch(alertService.error).finally(loadingService.hide);
+         
         }
         function cartable() {
             depo.main.state = 'cartable';
